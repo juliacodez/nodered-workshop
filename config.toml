@@ -1,3 +1,4 @@
+baseURL = "https://nodered-workshop.sammachin.com/"
 languageCode = "en-us"
 title = "NodeRED at Vonage Campus"
 theme = "learn"
