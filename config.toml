@@ -1,4 +1,3 @@
-baseURL = "http://campus.cloud.sammachin.com/"
 languageCode = "en-us"
 title = "NodeRED at Vonage Campus"
 theme = "learn"
