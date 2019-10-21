@@ -3,44 +3,54 @@ title: "Sending and Receiving SMS"
 weight : 15
 ---
 
+## Handling an Incoming Webhook
 
-### Handling an incomming webhook
+SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.
 
-SMS sent to your nexmo number is delivered to your webhook as an HTTP GET request (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.
+1. From the **network** section of the palette drag an **http in** node onto your canvas. Double click to open the properties, then make sure that the Method is set to **GET**.
 
-From the `input` section of the pallett drag an `http` node onto your canvas, double tap to open and make sure that the Method is set to `GET` in the URL box enter `/sms` this corresponds to the address we setup in the phone number earlier.
+2. In the URL box enter `/sms` this corresponds to the address we configured in the dashboard for your phone number earlier.
 
-HTTP Input nodes need a coresponding output node, otheriwise the HTTP request won't receive a response, for SMS Webhooks Nexmo doesn't particuarly care about whats int he response so long as it returns a success code. So we will simply connect an `HTTP Response` node from the `Output` section of the pallett.
+3. Connect an **http response** node from the network section of the palette to your original **http in** input node.
+{{% notice info %}}
+HTTP Input nodes need a coresponding output node, otherwise the HTTP request won't receive a response. For SMS Webhooks Nexmo doesn't particuarly care about the content of the response so long as it returns a success code.
+{{% /notice  %}}
 
-We also want to see the contents of the webhook, eg our SMS message and sender details etc. We will use a `debug` node from the `Output` section for this to simply log the information within our editor.
+4. Add a **debug** node from the **common** section and connect it to the **http in.**. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
+    ![Inbound SMS](/SMS_Webhook.png)
 
-Your flow should look like this:
+5. Click the red **Deploy** button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you'll need to do this often as you work through these flows.
 
-![Inbound SMS](/SMS_Webhook.png)
+6. Now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.
 
-Click the `Deploy` button in the top left to make this flow live, now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.
+## Sending an SMS in Response
+{{% notice note %}}
+SMS doesn't really have the concept of replies, however we can send a new SMS in response to an incoming message, using the sender details.
+{{% /notice  %}}
 
+1. From the **nexmo** section of the pallette drag a **Send SMS** node onto your canvas and connect the http input node to the Send SMS one.
 
-### Sending an SMS in response.
+2. Open the properties for the Send SMS node, select your API key as the **Nexmo Credentials**.
+{{% notice tip %}}
+ You will notice that next to the *To*, *From* and *Text* fields there are **{}** symbols, this is to indicate that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow.
+{{% /notice  %}}
 
-SMS doesn't really have the concept of replies, however we can send a new SMS to the sender  triggered by the incomming one.
+4. In the previous section you viewed the details of the incoming SMS in your debug window, this contained the **msg.payload** object with its own properties. We will use these to setup our response message:
+    - **msisdn** was the number that sent the message to your application
+    - **to** is your Nexmo number
+    - **text**contains the contents of the message.
 
-From the `nexmo` section of the pallett drag a `Send SMS` node onto your canvas and connect the http input node to the Send SMS one. 
+5. In the **To** field for Send SMS enter ``{{msg.payload.msisdn}}`` so that we use the sender of the original message as our recipient in the response.
 
-Open the properties for the Send SMS node, select your API key as the Nexmo Credentials.
+6. In the **From** field enter `{{msg.payload.to}}` so that the response appears to come from the same number that the first message was sent to.
 
-You will notice that nex to the To, From and Text fields there are {} symbols, this is to indicated that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow. 
-In the previous section you viewed the details of the incomming SMS in your debug window, this contained the `msg.payload` object with its own properties, `msisdn` was the number that sent the message to your application, `to` is your Nexmo number and `text` contains the contents of the message. We will use these to setup our response message:
-In the `To` field for Send SMS enter `{{msg.payload.msisdn}}` so that we use the sender of the original message as our recipient in the response.
-in the `From` field enter `{{msg.payload.to}}` so that the response appears to come from the same number that the first message was sent from.
-In `Text` enter `You said {{msg.payload.text}}` you will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.
+7. In **Text** enter `You said {{msg.payload.text}}`. You will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.
 
-![Response SMS](/Response_SMS.png)
-Click the `Done` button Then click `Deploy`
+    ![Response SMS](/Response_SMS.png)
 
-If you now send another message to your Nexmo number you should get back a message in response.
+8. Click the **Done** button Then click **Deploy**.
 
-Thats the basics of SMS messaging with Nexmo and Node-RED
+9. If you now send another message to your Nexmo number you should get back a message in response.
 
-
+**That`s the basics of SMS messaging with Nexmo and NodeRED**
 
