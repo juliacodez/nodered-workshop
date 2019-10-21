@@ -12,20 +12,20 @@
     <title>Badge Hacking :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1569399283" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1569399283" rel="stylesheet">
-    <link href="/css/hybrid.css?1569399283" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1569399283" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1569399283" rel="stylesheet">
-    <link href="/css/auto-complete.css?1569399283" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1569399283" rel="stylesheet">
-    <link href="/css/theme.css?1569399283" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1569399283" rel="stylesheet">
+    <link href="/css/nucleus.css?1571678139" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571678139" rel="stylesheet">
+    <link href="/css/hybrid.css?1571678139" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571678139" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571678139" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571678139" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571678139" rel="stylesheet">
+    <link href="/css/theme.css?1571678139" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571678139" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1569399283" rel="stylesheet">
+      <link href="/css/theme-blue.css?1571678139" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1569399283"></script>
+    <script src="/js/jquery-3.3.1.min.js?1571678139"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -42,7 +42,7 @@
 
   <div id="header-wrapper">
     <div id="header">
-      <a id="logo" href="">
+      <a id="logo" href="https://nodered-workshop.nexmodev.com/">
 <svg width="250px" height="60px" viewBox="0 0 513 129" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     
     <title>vc-logo-white</title>
@@ -86,7 +86,6 @@
     </g>
 </svg>
 </a>
-
     </div>
     
         <div class="searchbox">
@@ -95,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1569399283"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1569399283"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1571678139"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571678139"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1569399283"></script>
+<script type="text/javascript" src="/js/search.js?1571678139"></script>
 
     
   </div>
@@ -283,7 +282,7 @@
 <li>
 <ul>
 <li><a href="#mqtt">MQTT</a></li>
-<li><a href="#create-our-payload">Create our payload</a></li>
+<li><a href="#create-a-payload">Create A Payload</a></li>
 <li><a href="#publish-to-mqtt">Publish to MQTT</a></li>
 <li><a href="#further-steps">Further Steps</a></li>
 </ul></li>
@@ -315,48 +314,65 @@
 
 	
 
-<p>We&rsquo;ve added a little Easter Egg onto your badge, there&rsquo;s an applicaiton in the Menu called <em>Node-RED Workshop</em> if you launch it you&rsquo;ll see that no much happens, however what this means is that you can control your badge from NodeRED!</p>
+<p>We&rsquo;ve added a little Easter Egg onto your badge, there&rsquo;s an application in the Menu called <em>NodeRED Workshop</em>. If you launch it you&rsquo;ll see that not much happens at first - however the surprise is that you can control your badge from NodeRED!</p>
 
 <h2 id="mqtt">MQTT</h2>
 
-<p>For this we are using the MQTT protocol which is a lightweight protocol for real time control of internet of things devices. It`s whats known as a Publish/Subscribe protocol or PubSub
-The applicatin on the badge will connect to WiFi and then connect to the MQTT server, known as a Broker and subscribe to a topic. If the app isn&rsquo;t open its not connected.
-Node-RED has support for MQTT built in by default. So lets go ahead and setup a flow to Publish some messages to this topic.</p>
+<p>For this we are using the <a href="http://mqtt.org/">MQTT</a> protocol which is a lightweight protocol for real time control of internet of things devices. It&rsquo;s whats known as a Publish/Subscribe protocol or &ldquo;PubSub&rdquo;.</p>
 
-<h2 id="create-our-payload">Create our payload</h2>
+<p>The application on the badge will connect to WiFi and then connect to the MQTT server (known as a &ldquo;broker&rdquo;) and subscribe to a topic. If the app isn&rsquo;t open it&rsquo;s not connected.</p>
 
-<p>We need something to trigger our message, initially lets just use an inject node, later on you culd add this to your IVR or control it via a text message.
-Within the inject node we need to configure the data we will publish to our badge, open up the inject node and set the Payload type dropdown to <code>JSON</code> then in the text box enter the following string <code>[0,127,0,64,127,0,127,0,0,0,0,127,0,96,127]</code>
-This is a set of values to configure the RGB LEDs on the badge, each LED takes 3 values for Red Green and Blue between 0 and 255, there are 5 LEDs so we send 15 values.
-The badge will also convert these vaules into frequecies to play on the speaker.</p>
+<p>NodeRED has support for MQTT built in by default. So let&rsquo;s go ahead and set up a flow to publish some messages to an MQTT topic and see what we can do with them on the badge.</p>
+
+<h2 id="create-a-payload">Create A Payload</h2>
+
+<p>We need something to trigger our message, initially lets just use an &ldquo;inject&rdquo; node. Later on you could make this more interesting, for example you could add this to your IVR or control it via a text message.</p>
+
+<p>Within the &ldquo;inject&rdquo; node we need to configure the data we will publish to our badge, open up the inject node and set the Payload type dropdown to <code>JSON</code> then in the text box enter the following string <code>[0,127,0,64,127,0,127,0,0,0,0,127,0,96,127]</code>.</p>
+
+<p>This is a set of values to configure the RGB LEDs on the badge, each LED takes 3 values for red, green and blue between 0 and 255, there are 5 LEDs so we send 15 values.</p>
+
+<blockquote>
+<p>These are actually GRB LEDs so the first of the three values is for green, the middle one for red, and the last one for blue.</p>
+</blockquote>
+
+<p>The badge will also convert the values we sent to the LEDS into frequencies to play on the speaker.</p>
 
 <p><img src="/Badge_Inject.png" alt="Data to Inject to the Badge" /></p>
 
 <h2 id="publish-to-mqtt">Publish to MQTT</h2>
 
-<p>Now we need to setup our MQTT Publisher, use the <em>mqtt</em> node in the <em>Output</em> section of the palette.
-First we need to configure the broker we will use, select <code>Add new mqtt-boker config</code> and click the pencil icon
-Under server enter <code>test.mosquitto.org</code> and put the same in the Name field.
-Leave everything else as the defaults, and Click the <code>Add</code> button</p>
+<p>Now we need to set up the MQTT Publisher. Start with an &ldquo;mqtt&rdquo; node from the &ldquo;output&rdquo; section of the palette.</p>
 
-<p><img src="/MQTT_Broker_Config.png" alt="MQTT Broker Config" /></p>
+<ol>
+<li><p>First we need to configure the broker we will use, select &ldquo;Add new mqtt-broker config&rdquo; and click the pencil icon to edit.</p>
 
-<p>Back in the MQTT out node we need to set our topic to be the address of our badge, this is shown on the screen when you start the app and will be something like <code>/AB12DE</code> We also need to set the QoS to 2.</p>
+<ul>
+<li>Under &ldquo;Server&rdquo; enter <code>test.mosquitto.org</code> and put the same in the &ldquo;Name&rdquo; field.</li>
+<li>Leave everything else as the defaults, and click the &ldquo;Add&rdquo; button.</li>
+</ul>
 
-<p><img src="/MQTT_Config.png" alt="MQTT Config" /></p>
+<p><img src="/MQTT_Broker_Config.png" alt="MQTT Broker Config" /></p></li>
 
-<p>Your Flow should look like this:</p>
+<li><p>Back in the MQTT node we need to set our topic to be the address of our badge, this is shown on the screen when you start the app and will be something like <code>/AB12DE</code>.</p></li>
 
-<p><img src="/Badge_Flow.png" alt="Badge Flow " /></p>
+<li><p>Also in the MQTT config screen, set the QoS to 2.</p>
+
+<p><img src="/MQTT_Config.png" alt="MQTT Config" /></p></li>
+
+<li><p>Your flow should look like this:</p>
+
+<p><img src="/Badge_Flow.png" alt="Badge Flow " /></p></li>
+</ol>
 
 <p>Now click the button on the inject node and your badge should respond.</p>
 
 <h2 id="further-steps">Further Steps</h2>
 
 <ul>
-<li>Try integrating the MQTT event to your IVR to trigger the badge from a call</li>
-<li>Play around with the different values to make different patterns on the LEDs</li>
-<li>Can you control the color of the LEDs by SMS? eg Text <code>Green</code> or <code>Red</code></li>
+<li>Try integrating the MQTT event to your IVR to trigger the badge from a call.</li>
+<li>Play around with the different values to make different patterns on the LEDs.</li>
+<li>Can you control the color of the LEDs by SMS? eg Text <code>Green</code> or <code>Red</code>.</li>
 </ul>
 
 
@@ -499,19 +515,19 @@ Leave everything else as the defaults, and Click the <code>Add</code> button</p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1569399283"></script>
-    <script src="/js/jquery.sticky.js?1569399283"></script>
-    <script src="/js/featherlight.min.js?1569399283"></script>
-    <script src="/js/highlight.pack.js?1569399283"></script>
+    <script src="/js/clipboard.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571678139"></script>
+    <script src="/js/jquery.sticky.js?1571678139"></script>
+    <script src="/js/featherlight.min.js?1571678139"></script>
+    <script src="/js/highlight.pack.js?1571678139"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1569399283"></script>
-    <script src="/js/learn.js?1569399283"></script>
-    <script src="/js/hugo-learn.js?1569399283"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571678139"></script>
+    <script src="/js/learn.js?1571678139"></script>
+    <script src="/js/hugo-learn.js?1571678139"></script>
 
-    <link href="/mermaid/mermaid.css?1569399283" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1569399283"></script>
+    <link href="/mermaid/mermaid.css?1571678139" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571678139"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

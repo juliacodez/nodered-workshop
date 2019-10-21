@@ -2,12 +2,12 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Voice Calls on NodeRED at Vonage Campus</title>
-    <link>/voice-calls/</link>
+    <link>https://nodered-workshop.nexmodev.com/voice-calls/</link>
     <description>Recent content in Voice Calls on NodeRED at Vonage Campus</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="/voice-calls/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://nodered-workshop.nexmodev.com/voice-calls/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

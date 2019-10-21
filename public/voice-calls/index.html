@@ -12,20 +12,20 @@
     <title>Voice Calls :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1569399283" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1569399283" rel="stylesheet">
-    <link href="/css/hybrid.css?1569399283" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1569399283" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1569399283" rel="stylesheet">
-    <link href="/css/auto-complete.css?1569399283" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1569399283" rel="stylesheet">
-    <link href="/css/theme.css?1569399283" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1569399283" rel="stylesheet">
+    <link href="/css/nucleus.css?1571678139" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571678139" rel="stylesheet">
+    <link href="/css/hybrid.css?1571678139" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571678139" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571678139" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571678139" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571678139" rel="stylesheet">
+    <link href="/css/theme.css?1571678139" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571678139" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1569399283" rel="stylesheet">
+      <link href="/css/theme-blue.css?1571678139" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1569399283"></script>
+    <script src="/js/jquery-3.3.1.min.js?1571678139"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -42,7 +42,7 @@
 
   <div id="header-wrapper">
     <div id="header">
-      <a id="logo" href="">
+      <a id="logo" href="https://nodered-workshop.nexmodev.com/">
 <svg width="250px" height="60px" viewBox="0 0 513 129" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     
     <title>vc-logo-white</title>
@@ -86,7 +86,6 @@
     </g>
 </svg>
 </a>
-
     </div>
     
         <div class="searchbox">
@@ -95,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1569399283"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1569399283"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1571678139"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571678139"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1569399283"></script>
+<script type="text/javascript" src="/js/search.js?1571678139"></script>
 
     
   </div>
@@ -282,12 +281,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#incomming-calls">Incomming Calls</a></li>
+<li><a href="#incoming-calls">Incoming Calls</a></li>
 <li><a href="#call-events">Call Events</a></li>
 <li><a href="#outgoing-calls">Outgoing Calls</a></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -317,67 +313,100 @@
 
 	
 
-<p>Voice calls are more complex than text messages, there are far more possibiliites to control the call, Nexmo has creted an intsruction set known as Nexmo Call Control Objects (NCCOs) that allow you to tell the platform how to handle a call. An NCCO is either served up to Nexmo in response to a webhook for an inccoming call or is passed with the request to make a new call.</p>
 
-<h3 id="incomming-calls">Incomming Calls</h3>
+<div class="notices note" ><p>Voice calls are more complex than text messages because there are far more possibiliites to control the call. Nexmo has uses an instructions set known as Nexmo Call Control Objects (NCCOs) that enable you to tell the platform how to handle a call. An NCCO is either served up to Nexmo in response to a webhook for an incoming call, or is passed with the request to make a new call.</p>
+</div>
 
-<p>To start with we will create a simple incomming call handler. We can leave the SMS nodes as they are and create a new tab on the editor using the + button</p>
 
-<p>First of all we need to receive the incomming call voice webhook, we will use the <code>voice webhook</code> node from the input section for this, this node acts very much like the HTTP node we used for SMS with a few extras for working with Nexmo Voice Webhooks.</p>
+<h2 id="incoming-calls">Incoming Calls</h2>
 
-<p>Configure the Voice Webhook as a GET with a url of <code>/answer</code> which matches with the value we set when creating the application.</p>
+<p>For our first flow we will create a simple incoming call handler. We can leave the SMS nodes as they are and create a new flow tab on the editor using the + button on the right.</p>
 
-<p>Now we can start to build the NCCO that we will return to the incomming call, an NCCO is a series of actions, each action is availble as a darker green node in the Nexmo section of the pallette, for our first call we will use a talk to read some text  followed by a stream to play a sound file, you can connect as many actions together as you need to for your call, and you can have multiple actions of the same type eg <code>talk&gt;stream&gt;talk</code> However there are certain requirements that apply to some actions, consult the nexmo developer documentation if you want to know more about that.</p>
+<ol>
+<li><p>First we need to receive the incoming call voice webhook so add a <strong>voice webhook</strong> node from the &ldquo;input&rdquo; section to your canvas. This node is very similar to the HTTP input node we used in the SMS flow - with a few extras for working with Nexmo Voice Webhooks.</p></li>
 
-<p>Drag the talk action onto the pallet and open up the properties, the 2 fields we are going to set are the <code>Text</code> and the <code>Voice Name</code> you will notice the <code>{}</code> against the text field as this supports templating, For the text we will greet the caller and then read them the caller ID of the number they are calling from, we can access the callerID as a property from the voice webhook called <code>msg.call.from</code>. So in our text field lets put: <code>Hello, thanks for calling from {{msg.call.from}}</code>
-We can also set the voice name, Nexmo supports many different named voices to allow text to speech in multiple languages, the default voice is <code>Kimberly</code> which is a US English Female voice, we will change our node to use <code>Emma</code></p>
+<li><p>Configure the voice webhook node with a method of <strong>GET</strong> and a url of <code>/answer</code>. This URL matches with the value we configured in the dashboard when creating the application.</p>
 
-<p>Next we will create a <code>stream</code> node, the <code>stream</code> node takes a URL to a WAV or MP3 file hosted on the internet somewhere, (you could host this within NodeRED for example) and plays that to the caller. Drag your stream node onto your canvas and open up the properties, the only thing we need to set is the URL to the wav file, for this test you can enter <code>https://s3.sammachin.com/fanfare.wav</code></p>
+<p>Now we can start to build the NCCO that we will return to the incoming call. An NCCO is a series of actions, each action is available as a darker green node in the Nexmo section of the palette. For our first call we will use a <strong>talk</strong> action to read some text followed by a <strong>stream</strong> action to play a sound file. You can connect as many actions together as you need to for your call, and you can have multiple actions of the same type eg <strong>talk</strong> -&gt; <strong>stream</strong> -&gt; <strong>talk</strong>.
 
-<p>Finally we need to close off our webhook in order to return the NCCO we have built up, in the output section you will find a <code>return ncco</code> node, add this to the end of your flow.</p>
+<div class="notices tip" ><p>You can find more information about NCCOs in the <a href="https://developer.nexmo.com/voice/voice-api/guides/ncco">developer documentation</a>.</p>
+</div>
+</p></li>
 
-<p>Make sure that you have wired up your nodes as shown in the diagram then click deploy.</p>
+<li><p>Drag the <strong>talk</strong> node onto the canvas and open up the properties. The two fields we are going to set are the <strong>Text</strong> and the <strong>Voice Name</strong> and again you will notice the <strong>{}</strong> against the text field as this supports templating. When we receive a call we will greet the caller and then read them the caller ID of the number they are calling from - this is the <strong>msg.call.from</strong> property from the webhook we receive when the calls come in. So in our text field we can put this value: <code>Hello, thanks for calling from {{msg.call.from}}</code></p></li>
 
-<p><img src="/Basic_Voice.png" alt="Basic Voice Call" /></p>
+<li><p>We can also set the voice name. Nexmo supports many different named voices to allow text to speech in multiple languages, the default voice is <strong>Kimberly</strong> which is a US English Female voice, we will change our node to use <strong>Emma</strong>.</p></li>
 
-<p>If you now call your nexmo number you should hear your message.</p>
+<li><p>Next we will create a <strong>stream</strong> node. This node takes a URL to a WAV or MP3 file hosted on the internet somewhere, (you could host this within NodeRED for example) and plays that to the caller. Drag your stream node onto your canvas and open up the properties; the only thing we need to set is the URL to the wav file, for this test you can enter <code>https://s3.sammachin.com/fanfare.wav</code></p></li>
 
-<p>Now try re arraning the nodes so that the <code>Stream</code> is played befoe the <code>Talk</code> don&rsquo;t forget to click deploy after you make a change.</p>
+<li><p>Finally we need to close off our webhook in order to return the NCCO we have built up, in the output section you will find a <strong>return ncco</strong> node, add this to the end of your flow.</p></li>
 
-<h3 id="call-events">Call Events</h3>
+<li><p>Make sure that you have wired up your nodes as shown in the diagram then click <strong>deploy</strong>.</p>
 
-<p>The Nexmo platform also sends events related to voice calls to a separate Webhook endpoint, we can setup Node-RED to receive and log those events,</p>
+<p><img src="/Basic_Voice.png" alt="Basic Voice Call" /></p></li>
 
-<p>We use a simple HTTP Input node, connected to an HTTP Output node as Nexmo requires a response, then we will log the output to the debug window,
-You HTTP Input node should be configured to accept a POST on <code>/event</code> as was setup with the application.
-See the picture below for what this should now look like:</p>
+<li><p>Now call your Nexmo number and you should hear your message.</p></li>
 
-<p><img src="/Voice_Events.png" alt="Voice Event Webhook" /></p>
+<li><p>Try rearranging the nodes so that the <strong>stream</strong> is played befoe the <strong>talk</strong>.
 
-<p>If you now make a call to your Nexmo Number you will see a number of events logged into the debug window, this is also how Nexmo sends error messages about your application to you.</p>
+<div class="notices info" ><p>Don&rsquo;t forget to click deploy after you make a change!</p>
+</div>
+</p></li>
+</ol>
 
-<h3 id="outgoing-calls">Outgoing Calls</h3>
+<h2 id="call-events">Call Events</h2>
 
-<p>We can also tell nexmo to place a call to a number and when the call is answered execute an NCCO in much the same way, there are 2 methods you can either supply an AnswerURL with the request to create the call much like an incomming call or you can build the NCCO and pass that directly in the create call request. We will use tha latter as its a bit simpler.</p>
+<p>The Nexmo platform also sends events related to voice calls to a separate Webhook endpoint, we can set up NodeRED to receive and log those events. This can help us observe the call flow, and to debug any problems that occur.</p>
 
-<p>First of all we need <em>something</em> to act as a trigger for the flow, this could be an external service, a webhook, the Node-RED dashboard or even an incomming SMS, initially we will just use the <code>inject</code> node this allows us to start a flow by clickin on the button next to the node.</p>
+<ol>
+<li><p>We use a simple <strong>http in</strong> input node and connect it to an <strong>http response</strong> output node to ensure that we send a response to Nexmo. Your input node should be configured to accept a <strong>POST</strong> on <code>/event</code> as we configured earlier in the dashboard.</p></li>
 
-<p>Now we will build our NCCO nodes in the same way as we did for an incomming call, however we won&rsquo;t have values like <code>msg.call.from</code> to use for templating in this scenario.</p>
+<li><p>Add a <strong>debug</strong> node so we can see what&rsquo;s happening. See the picture below for what this should now look like:</p>
 
-<p>Once you have your inject node and your NCCO actions eg a <code>talk</code> use the <code>createCall</code> node from the Nexmo section of the pallette, open up the Properties of the node and set the following:
-<code>Nexmo Credentials</code> - should be the application you created at setup
-<code>Endpoint</code> - Select <code>Phone</code>
-<code>Number</code> - Enter your mobile number in international format without the + for example <code>(212) 555-1211</code> becomes <code>12125551212</code>
-Leave <code>dtmfAnswer</code> empty
-<code>From</code> should be your Nexmo number again in international format
-<code>Answer</code> select <code>msg.ncco</code> to use the NCCO built in the preceding nodes.
-Leave the other fields as default and click <code>done</code></p>
+<p><img src="/Voice_Events.png" alt="Voice Event Webhook" /></p></li>
 
-<p>Finally we will add a debug node to the end of the flow so that we can see the response sent back from Nexmo when we create the call.</p>
+<li><p>Make a call to your Nexmo number, You will see a number of events logged into the debug window, this is also how Nexmo sends error messages about your application to you.</p></li>
+</ol>
+
+<h2 id="outgoing-calls">Outgoing Calls</h2>
+
+<p>We can  tell Nexmo to place a call to a number and when the call is answered execute an NCCO in much the same way as an incomming call</p>
+
+<p>There are two main approaches:</p>
+
+<ul>
+<li>You can either supply an <strong>AnswerURL</strong> with the request to create the call much like an incoming call</li>
+<li>Or you can build the <strong>NCCO</strong> and pass that directly in the create call request</li>
+</ul>
+
+<p>We will use the latter as it&rsquo;s a bit simpler.</p>
+
+<ol>
+<li><p>Start a new flow for this example to keep things tidy. Click the <strong>+</strong> at the end of the tabs to add a new tab.</p></li>
+
+<li><p>We will need <em>something</em> to act as a trigger for the flow. This could be an external service, a webhook, the NodeRED dashboard or even an incoming SMS. Initially we will just use the <strong>inject</strong> node; this allows us to start a flow by clicking on the button next to the node.</p></li>
+
+<li><p>Build out some NCCO nodes in the same way as we did for an incoming call remember that we don&rsquo;t have values like <em>msg.call.from</em> to use for templating in this scenario because we&rsquo;re starting the call. Try a <strong>stream</strong> node followed by a <strong>talk</strong> node.</p></li>
+
+<li><p>Once you have your inject node and your NCCO action(s), add a &ldquo;createCall&rdquo; node from the Nexmo section of the palette. Open up the Properties of the node and set the following:</p>
+
+<ul>
+<li><strong>Nexmo Credentials</strong> - should be the application you created at setup</li>
+<li><strong>Endpoint</strong> - Select <strong>Phone</strong></li>
+<li><strong>Number</strong> - Enter your mobile number in international format without the + for example (212) 555-1211 becomes <strong>12125551212</strong></li>
+<li>Leave <strong>dtmfAnswer</strong> empty</li>
+<li><strong>From</strong> should be your Nexmo number, again in international format.</li>
+<li><strong>Answer</strong> select <strong>msg.ncco</strong> to use the NCCO built in the preceding nodes.</li>
+</ul>
+
+<p>Leave the other fields as default and click <strong>Done</strong></p></li>
+
+<li><p>Finally we will add a <strong>debug</strong> node to the end of the flow so that we can see the response sent back from Nexmo when we create the call.</p>
 
 <p>Your flow should look something like this:</p>
 
-<p><img src="/Create_Call.png" alt="Create Outbound Call" /></p>
+<p><img src="/Create_Call.png" alt="Create Outbound Call" /></p></li>
+</ol>
 
 
 
@@ -522,19 +551,19 @@ Leave the other fields as default and click <code>done</code></p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1569399283"></script>
-    <script src="/js/jquery.sticky.js?1569399283"></script>
-    <script src="/js/featherlight.min.js?1569399283"></script>
-    <script src="/js/highlight.pack.js?1569399283"></script>
+    <script src="/js/clipboard.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571678139"></script>
+    <script src="/js/jquery.sticky.js?1571678139"></script>
+    <script src="/js/featherlight.min.js?1571678139"></script>
+    <script src="/js/highlight.pack.js?1571678139"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1569399283"></script>
-    <script src="/js/learn.js?1569399283"></script>
-    <script src="/js/hugo-learn.js?1569399283"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571678139"></script>
+    <script src="/js/learn.js?1571678139"></script>
+    <script src="/js/hugo-learn.js?1571678139"></script>
 
-    <link href="/mermaid/mermaid.css?1569399283" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1569399283"></script>
+    <link href="/mermaid/mermaid.css?1571678139" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571678139"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

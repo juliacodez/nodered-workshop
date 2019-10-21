@@ -3,36 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/</loc>
   </url>
   
   <url>
-    <loc>/setting-up/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/setting-up/</loc>
   </url>
   
   <url>
-    <loc>/sending-and-recieving-sms/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/sending-and-recieving-sms/</loc>
   </url>
   
   <url>
-    <loc>/voice-calls/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/voice-calls/</loc>
   </url>
   
   <url>
-    <loc>/building-an-ivr/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/building-an-ivr/</loc>
   </url>
   
   <url>
-    <loc>/badge-hacking/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/badge-hacking/</loc>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://nodered-workshop.nexmodev.com/tags/</loc>
     <priority>0</priority>
   </url>
   

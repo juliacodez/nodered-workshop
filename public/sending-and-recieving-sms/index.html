@@ -12,20 +12,20 @@
     <title>Sending and Receiving SMS :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1569399283" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1569399283" rel="stylesheet">
-    <link href="/css/hybrid.css?1569399283" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1569399283" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1569399283" rel="stylesheet">
-    <link href="/css/auto-complete.css?1569399283" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1569399283" rel="stylesheet">
-    <link href="/css/theme.css?1569399283" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1569399283" rel="stylesheet">
+    <link href="/css/nucleus.css?1571678139" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1571678139" rel="stylesheet">
+    <link href="/css/hybrid.css?1571678139" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1571678139" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1571678139" rel="stylesheet">
+    <link href="/css/auto-complete.css?1571678139" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1571678139" rel="stylesheet">
+    <link href="/css/theme.css?1571678139" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1571678139" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1569399283" rel="stylesheet">
+      <link href="/css/theme-blue.css?1571678139" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1569399283"></script>
+    <script src="/js/jquery-3.3.1.min.js?1571678139"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -42,7 +42,7 @@
 
   <div id="header-wrapper">
     <div id="header">
-      <a id="logo" href="">
+      <a id="logo" href="https://nodered-workshop.nexmodev.com/">
 <svg width="250px" height="60px" viewBox="0 0 513 129" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     
     <title>vc-logo-white</title>
@@ -86,7 +86,6 @@
     </g>
 </svg>
 </a>
-
     </div>
     
         <div class="searchbox">
@@ -95,14 +94,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1569399283"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1569399283"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1571678139"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1571678139"></script>
 <script type="text/javascript">
     
-        var baseurl = "";
+        var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1569399283"></script>
+<script type="text/javascript" src="/js/search.js?1571678139"></script>
 
     
   </div>
@@ -282,11 +281,8 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#handling-an-incomming-webhook">Handling an incomming webhook</a></li>
-<li><a href="#sending-an-sms-in-response">Sending an SMS in response.</a></li>
-</ul></li>
+<li><a href="#handling-an-incoming-webhook">Handling an Incoming Webhook</a></li>
+<li><a href="#sending-an-sms-in-response">Sending an SMS in Response</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -316,42 +312,67 @@
 
 	
 
-<h3 id="handling-an-incomming-webhook">Handling an incomming webhook</h3>
+<h2 id="handling-an-incoming-webhook">Handling an Incoming Webhook</h2>
 
-<p>SMS sent to your nexmo number is delivered to your webhook as an HTTP GET request (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.</p>
+<p>SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.</p>
 
-<p>From the <code>input</code> section of the pallett drag an <code>http</code> node onto your canvas, double tap to open and make sure that the Method is set to <code>GET</code> in the URL box enter <code>/sms</code> this corresponds to the address we setup in the phone number earlier.</p>
+<ol>
+<li><p>From the <strong>network</strong> section of the palette drag an <strong>http in</strong> node onto your canvas. Double click to open the properties, then make sure that the Method is set to <strong>GET</strong>.</p></li>
 
-<p>HTTP Input nodes need a coresponding output node, otheriwise the HTTP request won&rsquo;t receive a response, for SMS Webhooks Nexmo doesn&rsquo;t particuarly care about whats int he response so long as it returns a success code. So we will simply connect an <code>HTTP Response</code> node from the <code>Output</code> section of the pallett.</p>
+<li><p>In the URL box enter <code>/sms</code> this corresponds to the address we configured in the dashboard for your phone number earlier.</p></li>
 
-<p>We also want to see the contents of the webhook, eg our SMS message and sender details etc. We will use a <code>debug</code> node from the <code>Output</code> section for this to simply log the information within our editor.</p>
+<li><p>Connect an <strong>http response</strong> node from the network section of the palette to your original <strong>http in</strong> input node.
 
-<p>Your flow should look like this:</p>
+<div class="notices info" ><p>HTTP Input nodes need a coresponding output node, otherwise the HTTP request won&rsquo;t receive a response. For SMS Webhooks Nexmo doesn&rsquo;t particuarly care about the content of the response so long as it returns a success code.</p>
+</div>
+</p></li>
 
-<p><img src="/SMS_Webhook.png" alt="Inbound SMS" /></p>
+<li><p>Add a <strong>debug</strong> node from the <strong>common</strong> section and connect it to the <strong>http in.</strong>. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
+<img src="/SMS_Webhook.png" alt="Inbound SMS" /></p></li>
 
-<p>Click the <code>Deploy</code> button in the top left to make this flow live, now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.</p>
+<li><p>Click the red <strong>Deploy</strong> button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you&rsquo;ll need to do this often as you work through these flows.</p></li>
 
-<h3 id="sending-an-sms-in-response">Sending an SMS in response.</h3>
+<li><p>Now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.</p></li>
+</ol>
 
-<p>SMS doesn&rsquo;t really have the concept of replies, however we can send a new SMS to the sender  triggered by the incomming one.</p>
+<h2 id="sending-an-sms-in-response">Sending an SMS in Response</h2>
 
-<p>From the <code>nexmo</code> section of the pallett drag a <code>Send SMS</code> node onto your canvas and connect the http input node to the Send SMS one.</p>
 
-<p>Open the properties for the Send SMS node, select your API key as the Nexmo Credentials.</p>
+<div class="notices note" ><p>SMS doesn&rsquo;t really have the concept of replies, however we can send a new SMS in response to an incoming message, using the sender details.</p>
+</div>
 
-<p>You will notice that nex to the To, From and Text fields there are {} symbols, this is to indicated that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow.
-In the previous section you viewed the details of the incomming SMS in your debug window, this contained the <code>msg.payload</code> object with its own properties, <code>msisdn</code> was the number that sent the message to your application, <code>to</code> is your Nexmo number and <code>text</code> contains the contents of the message. We will use these to setup our response message:
-In the <code>To</code> field for Send SMS enter <code>{{msg.payload.msisdn}}</code> so that we use the sender of the original message as our recipient in the response.
-in the <code>From</code> field enter <code>{{msg.payload.to}}</code> so that the response appears to come from the same number that the first message was sent from.
-In <code>Text</code> enter <code>You said {{msg.payload.text}}</code> you will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.</p>
 
-<p><img src="/Response_SMS.png" alt="Response SMS" />
-Click the <code>Done</code> button Then click <code>Deploy</code></p>
+<ol>
+<li><p>From the <strong>nexmo</strong> section of the pallette drag a <strong>Send SMS</strong> node onto your canvas and connect the http input node to the Send SMS one.</p></li>
 
-<p>If you now send another message to your Nexmo number you should get back a message in response.</p>
+<li><p>Open the properties for the Send SMS node, select your API key as the <strong>Nexmo Credentials</strong>.
 
-<p>Thats the basics of SMS messaging with Nexmo and Node-RED</p>
+<div class="notices tip" ><p>You will notice that next to the <em>To</em>, <em>From</em> and <em>Text</em> fields there are <strong>{}</strong> symbols, this is to indicate that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow.</p>
+</div>
+</p></li>
+
+<li><p>In the previous section you viewed the details of the incoming SMS in your debug window, this contained the <strong>msg.payload</strong> object with its own properties. We will use these to setup our response message:</p>
+
+<ul>
+<li><strong>msisdn</strong> was the number that sent the message to your application</li>
+<li><strong>to</strong> is your Nexmo number</li>
+<li><strong>text</strong>contains the contents of the message.</li>
+</ul></li>
+
+<li><p>In the <strong>To</strong> field for Send SMS enter <code>{{msg.payload.msisdn}}</code> so that we use the sender of the original message as our recipient in the response.</p></li>
+
+<li><p>In the <strong>From</strong> field enter <code>{{msg.payload.to}}</code> so that the response appears to come from the same number that the first message was sent to.</p></li>
+
+<li><p>In <strong>Text</strong> enter <code>You said {{msg.payload.text}}</code>. You will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.</p>
+
+<p><img src="/Response_SMS.png" alt="Response SMS" /></p></li>
+
+<li><p>Click the <strong>Done</strong> button Then click <strong>Deploy</strong>.</p></li>
+
+<li><p>If you now send another message to your Nexmo number you should get back a message in response.</p></li>
+</ol>
+
+<p><strong>That`s the basics of SMS messaging with Nexmo and NodeRED</strong></p>
 
 
 
@@ -496,19 +517,19 @@ Click the <code>Done</code> button Then click <code>Deploy</code></p>
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.min.js?1569399283"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1569399283"></script>
-    <script src="/js/jquery.sticky.js?1569399283"></script>
-    <script src="/js/featherlight.min.js?1569399283"></script>
-    <script src="/js/highlight.pack.js?1569399283"></script>
+    <script src="/js/clipboard.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.min.js?1571678139"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1571678139"></script>
+    <script src="/js/jquery.sticky.js?1571678139"></script>
+    <script src="/js/featherlight.min.js?1571678139"></script>
+    <script src="/js/highlight.pack.js?1571678139"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1569399283"></script>
-    <script src="/js/learn.js?1569399283"></script>
-    <script src="/js/hugo-learn.js?1569399283"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1571678139"></script>
+    <script src="/js/learn.js?1571678139"></script>
+    <script src="/js/hugo-learn.js?1571678139"></script>
 
-    <link href="/mermaid/mermaid.css?1569399283" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1569399283"></script>
+    <link href="/mermaid/mermaid.css?1571678139" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1571678139"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
