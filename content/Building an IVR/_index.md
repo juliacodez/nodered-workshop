@@ -11,7 +11,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 ## Initial Call Handling
 
-1. Re-use your flow from the earlier Incoming call example (probably Flow 2). We want to keep the `/event` webhook from our previous flow so we can see the events and errors.
+1. Re-use your flow from the earlier Incoming call example (probably Flow 2). We want to keep the */event* webhook from our previous flow so we can see the events and errors.
 
 1. We need to handle the incoming call. As before we will start with a "voice webhook" listening on `/answer`.
 
