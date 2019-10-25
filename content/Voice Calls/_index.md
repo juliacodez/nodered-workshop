@@ -63,24 +63,25 @@ We will use the latter as it's a bit simpler.
 
 1. Start a new flow for this example to keep things tidy. Click the **+** at the end of the tabs to add a new tab.
 
-1. We will need _something_ to act as a trigger for the flow. This could be an external service, a webhook, the NodeRED dashboard or even an incoming SMS. Initially we will just use the **inject** node; this allows us to start a flow by clicking on the button next to the node.
+2. We will need _something_ to act as a trigger for the flow. This could be an external service, a webhook, the NodeRED dashboard or even an incoming SMS. Initially we will just use the **inject** node; this allows us to start a flow by clicking on the button next to the node.
 
-1. Build out some NCCO nodes in the same way as we did for an incoming call remember that we don't have values like *msg.call.from* to use for templating in this scenario because we're starting the call. Try a **stream** node followed by a **talk** node.
+3. Build out some NCCO nodes in the same way as we did for an incoming call remember that we don't have values like *msg.call.from* to use for templating in this scenario because we're starting the call. Try a **stream** node followed by a **talk** node.
 
-2. Once you have your inject node and your NCCO action(s), add a "createCall" node from the Nexmo section of the palette. Open up the Properties of the node and set the following:
+4. Once you have your inject node and your NCCO action(s), add a "createCall" node from the Nexmo section of the palette. Open up the Properties of the node and set the following:
 
     - **Nexmo Credentials** - should be the application you created at setup
     - **Endpoint** - Select **Phone**
-    - **Number** - Enter your mobile number in international format without the + for example (212) 555-1211 becomes **12125551212**
+    - **Number** - Enter your mobile number in international format without the + for example (212) 555-1212 becomes **12125551212**
     - Leave **dtmfAnswer** empty
     - **From** should be your Nexmo number, again in international format.
     - **Answer** select **msg.ncco** to use the NCCO built in the preceding nodes.
 
     Leave the other fields as default and click **Done**
 
-4. Finally we will add a **debug** node to the end of the flow so that we can see the response sent back from Nexmo when we create the call.
+5. Finally we will add a **debug** node to the end of the flow so that we can see the response sent back from Nexmo when we create the call.
 
     Your flow should look something like this:
 
     ![Create Outbound Call](/Create_Call.png)
 
+6. Click the grey button on the *timestamp* node to trigger the flow, your phone will ring and play a message.
