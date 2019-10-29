@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Building an IVR :: NodeRED at Vonage Campus</title>
+    <title>Further Reading :: NodeRED at Vonage Campus</title>
 
     
     <link href="/css/nucleus.css?1572350577" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/building-an-ivr/">
+  <body class="" data-url="/further-reading/">
     <nav id="sidebar" class="">
 
 
@@ -185,8 +185,8 @@
   
     
     <li data-nav-id="/building-an-ivr/" title="Building an IVR" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/building-an-ivr/">
@@ -229,8 +229,8 @@
   
     
     <li data-nav-id="/further-reading/" title="Further Reading" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/further-reading/">
@@ -289,7 +289,7 @@
             
           
           
-            <a href='/'>Node-RED Workshop</a> > Building an IVR
+            <a href='/'>Node-RED Workshop</a> > Further Reading
           
          
           
@@ -304,10 +304,7 @@
 <ul>
 <li>
 <ul>
-<li><a href="#initial-call-handling">Initial Call Handling</a></li>
-<li><a href="#handling-the-input">Handling the Input</a></li>
-<li><a href="#call-paths">Call Paths</a></li>
-<li><a href="#expanding-your-ivr">Expanding your IVR</a></li>
+<li><a href="#what-can-i-do-next">What can I do next?</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -326,7 +323,7 @@
           
             <h1>
               
-              Building an IVR
+              Further Reading
             </h1>
           
 
@@ -337,116 +334,29 @@
 
 	
 
-<p>An IVR or Interactive Voice Response is a menu of options presented to a caller, they then navigate that menu using the buttons on their keypad to send DTMF (Dual Tone Multi Frequency) signals. IVRs are the fundamental navigation method of Voice Call applications.</p>
+<h2 id="what-can-i-do-next">What can I do next?</h2>
 
-<p>Each option on the IVR can direct the call to a different path, for example forwarding the call to a specific destination, playing a recorded piece of information or even triggering another service such as an SMS.</p>
-
-<p>An IVR can have multiple levels to it, where selection of one option presents the user with more options, this can go on to an infinite depth! For this activity we will just create a single level IVR.</p>
-
-<h2 id="initial-call-handling">Initial Call Handling</h2>
-
-<ol>
-<li><p>Re-use your flow from the earlier Incoming call example (probably Flow 2). We want to keep the <em>/event</em> webhook from our previous flow so we can see the events and errors.</p></li>
-
-<li><p>We need to handle the incoming call. As before we will start with a &ldquo;voice webhook&rdquo; listening on <code>/answer</code>.</p></li>
-
-<li><p>In response to the webhook we will return an NCCO made up of a <strong>talk</strong> node that tells the user the options, followed an <strong>input</strong> node to collect the user&rsquo;s choice.</p></li>
-
-<li><p>Your Flow should look like this:</p>
-
-<p><img src="/IVR_1.png" alt="IVR Inital Call Handler" /></p></li>
-
-<li><p>Next we need to configure the nodes we added, starting with the <strong>talk</strong> node.</p>
+<p>Here are some links to more content we have created about how to build communications workflows with nodered.</p>
 
 <ul>
-<li>We will use the &ldquo;Text&rdquo; field to greet the caller and then offer them our options, something like &ldquo;Hello please press 1 or 2&rdquo; will suffice for now. We can go back and edit the greeting once we have all our options.</li>
-<li>Choose a voice name or just leave this as the default.</li>
-<li>This time we are also going to tick the <strong>Barge In</strong> option, what this does is it allows the caller to send their input before the text has finished being read, its very useful in an IVR and prevents people from having to listen to a long list of options.</li>
+<li><p><a href="https://www.nexmo.com/blog/2019/07/03/ngrok-in-node-red-dr">Getting Started with Ngrok in Node-RED</a> - While building flows with the Nexmo APIs you&rsquo;ll often need a way to expose your server to the internet. This either means you&rsquo;re running a hosted version of Node-RED, or in case you&rsquo;re developing locally, using a tunneling service like <a href="https://ngrok.com/download">ngrok</a> - get up to speed with this article.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/04/17/send-sms-messages-node-red-dr/">How to Send SMS Messages with Node-RED</a> - Find out how to send SMS messages programmatically using the SMS API.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/04/24/receive-sms-messages-node-red-dr/">How to Receive SMS Messages with Node-RED</a> - Capture the SMS messages sent to your Nexmo number.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/05/09/receive-phone-calls-node-red-dr/">How to Receive Phone Calls with Node-RED</a> - Learn how to handle inbound calls made to your Nexmo number. By the end of this tutorial you&rsquo;ll know how to play a text-to-speech message to a caller. If you’d like to take it further, why not forward or record the conversation, or set up your custom voicemail?</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/06/14/make-text-to-speech-phone-calls-node-red-dr/">How to Make Text-to-Speech Phone Calls with Node-RED</a> - Next, you’ll be learning about outbound calls, and by the end of this article, you’ll have made your first text-to-speech (TTS) phone call with Node-RED and the Nexmo Voice API.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/07/15/stream-audio-node-red-dr">How to Stream Audio into a Call with Node-RED</a> - It’s always a nice touch to be greeted by a human voice when calling a business, as opposed to the all too well known friendly neighbourhood robot. Find out how to play an audio file to a caller and how to stream audio to the recipient of an outbound call.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/10/07/conference-call-node-red-dr">Build a Conference Call with Node-RED</a> - You&rsquo;ve already learnt how to make and receive phone calls using the Nexmo Voice API, now it&rsquo;s time to put the pieces together and build a voice-based conferencing service.</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/10/17/forward-call-via-voice-proxy-node-red-dr">Forward a Call via a Voice Proxy</a> - If you’ve ever wondered how you can contact your ride share driver, Airbnb host or courier without knowing their number, or you’re simply interested in making private calls, follow along and find out how this is done!</p></li>
+
+<li><p><a href="https://www.nexmo.com/blog/2019/09/25/verify-phone-numbers-with-node-red-dr">Verify Phone Numbers with Node-RED</a> - In this tutorial, we’ll look at the Nexmo Verify API and explore a handy way of validating your users’ phone numbers.</p></li>
 </ul>
-
-<p><img src="/Talk_Options.png" alt="Talk Options" /></p></li>
-
-<li><p>Next we configure the <strong>input</strong> node, Once the user has entered the required number of digits those will be sent as a new webhook, so we need to configure where that webhook should be sent.</p></li>
-
-<li><p>In the URL field, enter the full address of your NodeRED instance followed by <code>/input1</code> (e.g. <strong><a href="https://monkey.workbench.red/input1">https://monkey.workbench.red/input1</a></strong>).  We use <strong>/input1</strong> because if we were to later create a second level to our IVR we would need to send that input to a different address, e.g. <strong>/input2</strong>.</p></li>
-
-<li><p>Set the method to GET. We can leave <em>Submit on Hash</em> unchecked; this option causes the input to be sent when the user presses the # key e.g. for collecting something like an account number.</p></li>
-
-<li><p>Again we will leave the timeout as the default, but we will set <strong>Max Digits</strong> to <strong>1</strong>, this means that we only need the user to press a single key for the input to be sent, which means we can have a maximum of 9 options in our menu.</p>
-
-<p><img src="/Input_Options.png" alt="Input Options" /></p></li>
-</ol>
-
-<h2 id="handling-the-input">Handling the Input</h2>
-
-<ol>
-<li><p>Set up another <strong>voice webhook</strong> to handle the user input arriving from Nexmo. It should be configured to listen for a <strong>GET</strong> on <code>/input1</code> which corresponds to our setting in the <em>input</em> node above.</p></li>
-
-<li><p>The first thing we will do with this flow is to check what number the caller pressed and then branch our flow accordingly. We can do this using one of NodeRED&rsquo;s built in nodes, the <strong>switch</strong> node. You&rsquo;ll find <strong>switch</strong> in the &ldquo;function&rdquo; section of the palette.</p></li>
-
-<li><p>To configure the switch node, the first thing we will do is set which property we want to switch on, in this case the digit(s) that the user pressed are sent in <code>msg.call.dtmf</code>.</p></li>
-
-<li><p>We then need to set up routes for each option</p>
-
-<ul>
-<li>on the first option, use the dropdown to choose &ldquo;is empty&rdquo; so we can handle the case where we don&rsquo;t get any user input. In this scenario Nexmo will send the webhook with the <em>timedout</em> param set to true and <code>msg.call.dtmf</code> will be an empty string.</li>
-<li>click the + add button at the bottom to add two additional options</li>
-<li>we will set up handlers for <code>== 1</code> and <code>== 2</code> so that we can detect what number the user pressed. These become the second and third output points on the switch node.</li>
-</ul>
-
-<p><img src="/Switch_Config.png" alt="Switch Node Config" /></p></li>
-</ol>
-
-<h2 id="call-paths">Call Paths</h2>
-
-<p>You will notice that your <strong>switch</strong> node now has three output links, each one of these represents a different option that you configured. You can hover over them with the mouse to check what each one is. We&rsquo;ll link them up to the actions we want each one to take.</p>
-
-<ol>
-<li><p>Firstly we will deal with the <em>is empty</em> path, the simplest thing to do here is to re-present the user with the menu options, so we can simply connect this back to our initial talk node to read the options and then collect input.</p></li>
-
-<li><p>Next we need to do something if the caller presses 1. For this we will connect the caller to another numbe using a &ldquo;connect&rdquo; node from the palette. To configure this node to connect the call to another phone number:</p>
-
-<ul>
-<li>The <strong>Endpoint</strong> should be <strong>Phone</strong>.</li>
-<li>The <strong>Number</strong> should be another phone number you might have (ask the person next to you if you can use their cellphone number)</li>
-<li>The <strong>From</strong> should be your Nexmo number.</li>
-</ul>
-
-<p><img src="/Connect_Node_Config.png" alt="Connect Node Config" /></p></li>
-
-<li><p>For the 2nd option in our IVR we are going to play a short message to let the user know we will send them a link by SMS - and then actually send the SMS. Connect a <strong>talk</strong> node to the third output of the <strong>switch</strong> and configure this to say &ldquo;I have sent you the link by SMS&rdquo;.</p></li>
-
-<li><p>Next we are also going to use the &ldquo;send SMS&rdquo; node, we can wire this up in parallel to the talk node so that the SMS is sent as soon as the user has pressed their input.</p>
-
-<p>However we need to do some additional work, the <code>/input1</code> webhook won&rsquo;t get the caller ID of the person that is calling by default, so we need to go back to our input node and configure the URL to send that along with the user&rsquo;s DTMF input.</p>
-
-<p>In the input node edit the URL from <code>/input1</code> to be <code>/input1?from={{msg.call.from}}</code> this will then send the value of &ldquo;from&rdquo; as a new value also called &ldquo;from&rdquo; to our <code>/input1</code> handler.</p></li>
-
-<li><p>Now we can add our <strong>Send SMS</strong> node, select your Nexmo credentials, set the <strong>To</strong> as <code>{{msg.call.from}}</code> and the <strong>From</strong> as your Nexmo number. In the text field you can enter a URL of your choice e.g. <a href="https://vonage.com/campus">https://vonage.com/campus</a>, this will be the link we send to the user.</p></li>
-
-<li><p>We need to make sure that the last two paths from the Switch Node are both closed off with a &ldquo;Return NCCO&rdquo; node, you can use separate ones or they can both share the same node.</p></li>
-
-<li><p>Finally we will add a debug node to the end of the Send SMS to log the response from Nexmo.</p>
-
-<p>Your Flow should look like this:</p>
-
-<p><img src="/IVR_Complete.png" alt="IVR Complete" /></p></li>
-
-<li><p>Click <strong>Deploy</strong> and then go ahead and call your Nexmo number a few times to try all the different options.</p></li>
-</ol>
-
-<h2 id="expanding-your-ivr">Expanding your IVR</h2>
-
-<p>Here are some suggestions for additional things to add to your IVR:</p>
-
-<ul>
-<li>Try adding a second layer of options to the menu, e.g. a choice of which link to send by SMS</li>
-<li>Add an option to connect the caller into a conversation node, this will give you a conference call. Test by having someone else call the same number</li>
-<li>Try recording a message from the caller</li>
-<li>If you are feeling very adventurous, set up the Email node to email you when someone chooses a particular option</li>
-</ul>
-
-<p>There will be people around to help you with these.</p>
 
 
 
@@ -538,6 +448,21 @@
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -555,24 +480,6 @@
             
                 
                     
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -594,10 +501,10 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/voice-calls/" title="Voice Calls"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/badge-hacking/" title="Badge Hacking"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/badge-hacking/" title="Badge Hacking" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/setting-up/" title="Setting Up" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>

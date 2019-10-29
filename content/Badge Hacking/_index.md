@@ -3,7 +3,9 @@ title: "Badge Hacking"
 weight : 45
 ---
 
-We've added a little Easter Egg onto your badge, there's an application in the Menu called *NodeRED Workshop*. If you launch it you'll see that not much happens at first - however the surprise is that you can control your badge from NodeRED!
+We've added a little Easter Egg onto your badge, there's an application in the Menu called *NodeRED Workshop*. 
+As a reward for getting this far we've got an additional board for your badge to add WiFi functionality, ask someone to get you a board and they will show you how to plug it in, Then open the NodeRED Workshop app from your badge menu.
+If you launch it you'll see that not much happens at first - however the surprise is that you can control your badge from NodeRED!
 
 ## MQTT
 
@@ -13,47 +15,52 @@ The application on the badge will connect to WiFi and then connect to the MQTT s
 
 NodeRED has support for MQTT built in by default. So let's go ahead and set up a flow to publish some messages to an MQTT topic and see what we can do with them on the badge.
 
-## Create A Payload
+## Add a custom package
 
-We need something to trigger our message, initially lets just use an "inject" node. Later on you could make this more interesting, for example you could add this to your IVR or control it via a text message.
+We have created a nodered package just for the campus badge, you will find it along with all sorts of other nodes in the pallette manager.
 
-Within the "inject" node we need to configure the data we will publish to our badge, open up the inject node and set the Payload type dropdown to `JSON` then in the text box enter the following string `[0,127,0,64,127,0,127,0,0,0,0,127,0,96,127]`.
+Click the menu in the top right corner of the dashboard, and select **Manage Pallette**
 
-This is a set of values to configure the RGB LEDs on the badge, each LED takes 3 values for red, green and blue between 0 and 255, there are 5 LEDs so we send 15 values.
+![Manage Broker Pallette](/Manage_Pallette.png)
 
-> These are actually GRB LEDs so the first of the three values is for green, the middle one for red, and the last one for blue.
+Now select the **Install** Tab and search for **campusbadge**, you will be offered one package, click the install button and wait a few moments.
 
-The badge will also convert the values we sent to the LEDS into frequencies to play on the speaker.
+![CampusBadge Package](/campusbadge_package.png)
 
-![Data to Inject to the Badge](/Badge_Inject.png)
+Once the package is installed you can close the pallette manager, in your pallete you will now have a new node in the Function section, its green and named **campusbadge**
+
+Drag this node onto your flow
+
+## Configure badge payload
+
+The campusbadge node helps you to setup the payload that will be sent to your badge, you can set the color of each of the LEDs, a short message to be displayed and the frequency and duration of the tone played on the speaker. You also set the badge 4 digit ID reference in this node.
+
+Go ahead and setup a pattern of colors for the lights aling with your message and speaker tone, some ideas are below.
+You will find your badges 4 digit ID displayed on the badge screen once once you launch the NodeRED Workshop app and it says *MQTT Connected*.
+
+![Badge Config](/badge_config.png)
+
 
 ## Publish to MQTT
 
-Now we need to set up the MQTT Publisher. Start with an "mqtt" node from the "output" section of the palette.
+Now we need to set up the MQTT Publisher. Start with an **mqtt out** node from the *network* section of the palette.
 
-1. First we need to configure the broker we will use, select "Add new mqtt-broker config" and click the pencil icon to edit.
-    * Under "Server" enter `test.mosquitto.org` and put the same in the "Name" field.
+First we need to configure the broker we will use, select "Add new mqtt-broker config" and click the pencil icon to edit.
+    * Under "Server" enter `demo.nexmodev.com` and put the same in the "Name" field.
     * Leave everything else as the defaults, and click the "Add" button.
 
-    ![MQTT Broker Config](/MQTT_Broker_Config.png)
+![MQTT Broker Config](/MQTT_Broker_Config.png)
 
-2. Back in the MQTT node we need to set our topic to be the address of our badge, this is shown on the screen when you start the app and will be something like `/AB12DE`.
+Connect the output of your *campusbadge* node to the *MQTT Out* node, and add an **Inject** node to the campusbadge input to kick off the flow.
 
-3. Also in the MQTT config screen, set the QoS to 2.
+![Badge Flow](/badge_flow.png)
 
-    ![MQTT Config](/MQTT_Config.png)
-
-4. Your flow should look like this:
-
-    ![Badge Flow ](/Badge_Flow.png)
-
-Now click the button on the inject node and your badge should respond.
-
+Now click the button on the inject node and your badge should respond, don't forget to **Deploy** your config first.
 
 ## Further Steps
 
 * Try integrating the MQTT event to your IVR to trigger the badge from a call.
-* Play around with the different values to make different patterns on the LEDs.
 * Can you control the color of the LEDs by SMS? eg Text `Green` or `Red`.
+* Your badge can also publish events back through MQTT to NodeRED when the buttons are pressed, use an **MQTT In* node and subscribe to `/badge/[Your BadgeID]/events` to receive them.
 
 
