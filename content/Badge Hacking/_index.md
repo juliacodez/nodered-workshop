@@ -53,7 +53,7 @@ First we need to configure the broker we will use, select "Add new mqtt-broker c
 
 Connect the output of your *campusbadge* node to the *MQTT Out* node, and add an **Inject** node to the campusbadge input to kick off the flow.
 
-![Badge Flow](/badge_flow.png)
+![Badge Flow](/Badge_Flow.png)
 
 Now click the button on the inject node and your badge should respond, don't forget to **Deploy** your config first.
 
