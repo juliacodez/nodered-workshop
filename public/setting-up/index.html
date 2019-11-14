@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Setting Up :: NodeRED at Vonage Campus</title>
+    <title> :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1572351624" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1572351624" rel="stylesheet">
-    <link href="/css/hybrid.css?1572351624" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1572351624" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1572351624" rel="stylesheet">
-    <link href="/css/auto-complete.css?1572351624" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1572351624" rel="stylesheet">
-    <link href="/css/theme.css?1572351624" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1572351624" rel="stylesheet">
+    <link href="/css/nucleus.css?1573724425" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573724425" rel="stylesheet">
+    <link href="/css/hybrid.css?1573724425" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573724425" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573724425" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573724425" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573724425" rel="stylesheet">
+    <link href="/css/theme.css?1573724425" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573724425" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1572351624" rel="stylesheet">
+      <link href="/css/theme-blue.css?1573724425" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1572351624"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573724425"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -95,14 +95,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1572351624"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1572351624"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573724425"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573724425"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1572351624"></script>
+<script type="text/javascript" src="/js/search.js?1573724425"></script>
 
     
   </div>
@@ -111,28 +111,6 @@
     <ul class="topics">
 
         
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/setting-up/" title="Setting Up" class="dd-item 
-        parent
-        active
-        
-        ">
-      <a href="/setting-up/">
-          Setting Up
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
           
           
 
@@ -244,6 +222,28 @@
  
 
           
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/setting-up/" title="" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/setting-up/">
+          
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
          
     </ul>
 
@@ -289,7 +289,7 @@
             
           
           
-            <a href='/'>Node-RED Workshop</a> > Setting Up
+            <a href='/'>Node-RED Workshop</a> > 
           
          
           
@@ -300,17 +300,7 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#basic-auth">Basic Auth</a></li>
-<li><a href="#voice-application-auth">Voice Application Auth</a></li>
-<li><a href="#phone-number-setup">Phone Number Setup</a></li>
-<li><a href="#congratulations">Congratulations!</a></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -326,7 +316,7 @@
           
             <h1>
               
-              Setting Up
+              
             </h1>
           
 
@@ -336,82 +326,6 @@
 
 
 	
-
-<p>Claim one of the printed sheets from the tables containing the URL, username and password for a node red instance hosted on our shared server (one per person). When you log in you will be presented with the NodeRED Editor - this is for you to use during this workshop.</p>
-
-<p>The first thing you need to do is to setup your Nexmo Credentials, you should have a note of your API Key and Secret to hand or you can find these on the <a href="https://dashboard.nexmo.com">dashboard</a>.</p>
-
-<p>Nexmo uses different authentication for our various APIs. For this workshop we will first set up Basic Auth which is used for SMS and Verify, then also create a Nexmo Voice application which will provide the auth for the Voice API.</p>
-
-<h2 id="basic-auth">Basic Auth</h2>
-
-<ol>
-<li><p>To set up basic auth drag a &lsquo;Send SMS&rsquo; node from the palette on the left onto the canvas, double click the node to open the properties, and then click on the pencil icon where it says <strong>Add new nexmobasic&hellip;</strong></p>
-
-<p><img src="/SMS_Node_Auth.png" alt="SMS Node Config" /></p></li>
-
-<li><p>In the window that opens enter your API Key and API Secret, Then Click <strong>Add</strong></p>
-
-<p><img src="/Basic_Auth.png" alt="Basic Auth" /></p></li>
-
-<li><p>We don&rsquo;t actually need the SMS node so you can delete it now by going into the node properties and choosing delete.</p></li>
-</ol>
-
-<h2 id="voice-application-auth">Voice Application Auth</h2>
-
-<p>Next we will create a Nexmo voice application from within NodeRED. The voice application contains a bundle of config for routing incoming calls to your NodeRED instance and also holds the authentication credentials to make outbound calls and other voice API calls.</p>
-
-<ol>
-<li><p>To configure auth for Voice API, we will select a <strong>CreateCall</strong> node from the palette, and open up its properties, click the pencil icon next to the <strong>Add new nexmovoiceapp</strong> menu.</p>
-
-<p><img src="/Create_Call_Config.png" alt="Create Call Node Config" /></p></li>
-
-<li><p>We need to enter a few more details this time:</p>
-
-<ul>
-<li>Name - This is what the application will be called in your Nexmo Dashboard, we recommend something like &ldquo;NodeRED - [Name of your Instance]&rdquo;</li>
-<li>API Key and Secret - Same as before</li>
-<li>AnswerURL - This is the URL that will be called for incoming calls to numbers linked to the application, you need to enter the web address of your NodeRED instance followed by <em>/answer</em> e.g. <strong><a href="https://monkey.workbench.red/answer">https://monkey.workbench.red/answer</a></strong></li>
-<li>EventURL  - Like the AnswerURL this is where call events are sent to, we will use <em>/event</em> for this, eg <strong><a href="https://monkey.workbench.red/event">https://monkey.workbench.red/event</a></strong></li>
-</ul></li>
-
-<li><p>Now click on <strong>Create New Application</strong>, after a few seconds the 2 grey boxes will be filled with an APP ID and Private Key, this means the application has been created on the Nexmo plaform. Click the <strong>Done</strong> button to save this config. You now have a Nexmo Voice Application created on your account and the credentials stored within NodeRED.</p>
-
-<p><img src="/Voice_Auth.png" alt="Voice Application Auth" /></p></li>
-</ol>
-
-<h2 id="phone-number-setup">Phone Number Setup</h2>
-
-<p>Next we will purchase a number and link that to our new voice application and configure a webhook for SMS.</p>
-
-<ol>
-<li><p>First, log in to your Nexmo account at <a href="https://dashboard.nexmo.com">https://dashboard.nexmo.com</a></p></li>
-
-<li><p>From the right hand menu select <strong>Numbers</strong> then <strong>Buy Numbers</strong></p></li>
-
-<li><p>In the Dropdown lists select your country (United States), Then under Features select <strong>SMS &amp; Voice</strong>  and Type <strong>Mobile</strong>, Then click <strong>Search</strong></p>
-
-<p><img src="/Buy_Number.png" alt="Buy a Number" /></p></li>
-
-<li><p>Choose a number and click the <strong>Buy</strong> button. After a few seconds you will see a popup confirming the number has been assigned to your account.</p></li>
-
-<li><p>From the right hand menu select <strong>Your Numbers</strong> You should then see the number you purchased listed. Click on the cog icon under <strong>Manage</strong></p>
-
-<p><img src="/Your_Numbers.png" alt="Your Numbers" /></p></li>
-
-<li><p>Now we will be presented with an interface to configure where incoming calls and SMSes to this number should be sent.</p></li>
-
-<li><p>For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by <em>/sms</em> eg <strong><a href="https://monkey.workbench.red/sms">https://monkey.workbench.red/sms</a></strong></p></li>
-
-<li><p>For Voice we need to select the Application we created earlier, in the dropdown you should see the name that you chose when creating the application.</p>
-
-<p><img src="/Config_Number.png" alt="Configure Number" /></p></li>
-</ol>
-
-<h2 id="congratulations">Congratulations!</h2>
-
-<p>Your NodeRED instance is now configured and we can build your first workflows.</p>
-
 
 
 
@@ -451,23 +365,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -534,6 +431,23 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -555,7 +469,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Node-RED Workshop"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/further-reading/" title="Further Reading"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/sending-and-recieving-sms/" title="Sending and Receiving SMS" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -568,19 +482,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1572351624"></script>
-    <script src="/js/jquery.sticky.js?1572351624"></script>
-    <script src="/js/featherlight.min.js?1572351624"></script>
-    <script src="/js/highlight.pack.js?1572351624"></script>
+    <script src="/js/clipboard.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1573724425"></script>
+    <script src="/js/jquery.sticky.js?1573724425"></script>
+    <script src="/js/featherlight.min.js?1573724425"></script>
+    <script src="/js/highlight.pack.js?1573724425"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1572351624"></script>
-    <script src="/js/learn.js?1572351624"></script>
-    <script src="/js/hugo-learn.js?1572351624"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1573724425"></script>
+    <script src="/js/learn.js?1573724425"></script>
+    <script src="/js/hugo-learn.js?1573724425"></script>
 
-    <link href="/mermaid/mermaid.css?1572351624" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1572351624"></script>
+    <link href="/mermaid/mermaid.css?1573724425" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1573724425"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

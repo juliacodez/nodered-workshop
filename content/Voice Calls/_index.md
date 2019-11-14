@@ -6,6 +6,34 @@ weight : 25
 Voice calls are more complex than text messages because there are far more possibiliites to control the call. Nexmo has uses an instructions set known as Nexmo Call Control Objects (NCCOs) that enable you to tell the platform how to handle a call. An NCCO is either served up to Nexmo in response to a webhook for an incoming call, or is passed with the request to make a new call.
 {{% /notice %}}
 
+
+## Voice Application Auth
+
+Next we will create a Nexmo voice application from within NodeRED. The voice application contains a bundle of config for routing incoming calls to your NodeRED instance and also holds the authentication credentials to make outbound calls and other voice API calls.
+
+1. To configure auth for Voice API, we will select a **CreateCall** node from the palette, and open up its properties, click the pencil icon next to the **Add new nexmovoiceapp** menu.
+
+    ![Create Call Node Config](/Create_Call_Config.png)
+
+2. We need to enter a few more details this time:
+ * Name - This is what the application will be called in your Nexmo Dashboard, we recommend something like "NodeRED - [Name of your Instance]"
+ * API Key and Secret - Same as before
+ * AnswerURL - This is the URL that will be called for incoming calls to numbers linked to the application, you need to enter the web address of your NodeRED instance followed by */answer* e.g. **https://monkey.workbench.red/answer**
+ * EventURL  - Like the AnswerURL this is where call events are sent to, we will use */event* for this, eg **https://monkey.workbench.red/event**
+
+3. Now click on **Create New Application**, after a few seconds the 2 grey boxes will be filled with an APP ID and Private Key, this means the application has been created on the Nexmo plaform. Click the **Done** button to save this config. You now have a Nexmo Voice Application created on your account and the credentials stored within NodeRED.
+
+    ![Voice Application Auth](/Voice_Auth.png)
+
+
+## Link Phone Number 
+
+In the nexmo Dashboard we can now link the number you earlier purchased for SMS to your Voice application, goto https://dashboard.nexmo.com/applications and click on the name of the application you just created.
+
+You will then see a screen with that applciations details and at the bottom it will list all the numbers on your account, you should see a **Link** button next to the number you just purchased, Click this and your number will be liknked to your NodeRED application for incomming voice calls.
+
+  ![Link Voice Number](/link_voice_number.png)
+
 ## Incoming Calls
 
 For our first flow we will create a simple incoming call handler. We can leave the SMS nodes as they are and create a new flow tab on the editor using the + button on the right. 

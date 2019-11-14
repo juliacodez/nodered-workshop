@@ -3,7 +3,67 @@ title: "Sending and Receiving SMS"
 weight : 15
 ---
 
-## Handling an Incoming Webhook
+## Setup Basic Auth
+
+1. To set up basic auth drag a 'Send SMS' node from the palette on the left onto the canvas, double click the node to open the properties, and then click on the pencil icon where it says **Add new nexmobasic...**
+
+    ![SMS Node Config](/SMS_Node_Auth.png)
+
+2. In the window that opens enter your API Key and API Secret, Then Click **Add**
+
+    ![Basic Auth](/Basic_Auth.png)
+
+## Phone Number Setup
+
+Next we will purchase a number and link that to our new voice application and configure a webhook for SMS.
+
+1. First, log in to your Nexmo account at https://dashboard.nexmo.com
+
+2. From the right hand menu select **Numbers** then **Buy Numbers**
+
+3. In the Dropdown lists select your country, Then under Features select **SMS & Voice**  and Type **Mobile**, Then click **Search**
+
+    ![Buy a Number](/Buy_Number.png)
+
+4. Choose a number and click the **Buy** button. After a few seconds you will see a popup confirming the number has been assigned to your account.
+
+5. From the right hand menu select **Your Numbers** You should then see the number you purchased listed. Click on the cog icon under **Manage**
+
+    ![Your Numbers](/Your_Numbers.png)
+
+6. Now we will be presented with an interface to configure where  SMSes to this number should be sent.
+
+7. For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by */sms*  ** e.g. https://monkey.workbench.red/sms**
+
+	![Configure Number for SMS](/config_number_sms.png)
+
+## Send an SMS
+
+Back in our SMS Node we can now setup some parameters for the outgoing SMS, there are 3 things to set, the Destination, the Sender and the content of the message.
+
+{{% notice info %}}
+Where ever a phone number is used with Nexmo it should be in e.164 format, that is with the country code but without any other characters or spaces, for example the us number `(212) 555-1212` should become `12125551212` or the UK number 07000 900 123 would become `447000900123`
+{{% /notice  %}}
+
+1. In the **To** Field enter your mobile number in e.164 format.
+
+2. In the **From** Field enter the nexmo number you just purchased
+
+3. In the **Text** Fileld enter some text like `Hello World`
+ 
+ ![Configure SMS](/configure_sms.png)
+
+Now we need something to trigger our Send SMS node and start the flow, the simplest way to do this in NodeRED is to use an **Inject** node, this will send whatever payload you configure whenever you click the grey button on the left of the node, For our Send SMS node we don't really mind what the payload is so just leave that as the default (timestamp)
+
+We also want to log the response from the Nexmo API to our SendSMS request, for this we will use the **Debug** node which will log the msg.payload to the debug panel on the right of the editor.
+
+You flow should now look like this, remember to click **Deploy** to save your flow.
+
+  ![Send SMS Flow](/send_sms_flow.png)
+
+You can now click the grey button on the inject node to send yourself an SMS 🙌
+
+## Handling an Incoming SMS
 
 SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.
 

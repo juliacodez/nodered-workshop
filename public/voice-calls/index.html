@@ -12,20 +12,20 @@
     <title>Voice Calls :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1572351624" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1572351624" rel="stylesheet">
-    <link href="/css/hybrid.css?1572351624" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1572351624" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1572351624" rel="stylesheet">
-    <link href="/css/auto-complete.css?1572351624" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1572351624" rel="stylesheet">
-    <link href="/css/theme.css?1572351624" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1572351624" rel="stylesheet">
+    <link href="/css/nucleus.css?1573724425" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573724425" rel="stylesheet">
+    <link href="/css/hybrid.css?1573724425" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573724425" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573724425" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573724425" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573724425" rel="stylesheet">
+    <link href="/css/theme.css?1573724425" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573724425" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1572351624" rel="stylesheet">
+      <link href="/css/theme-blue.css?1573724425" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1572351624"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573724425"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -95,14 +95,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1572351624"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1572351624"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573724425"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573724425"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1572351624"></script>
+<script type="text/javascript" src="/js/search.js?1573724425"></script>
 
     
   </div>
@@ -111,28 +111,6 @@
     <ul class="topics">
 
         
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/setting-up/" title="Setting Up" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/setting-up/">
-          Setting Up
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
           
           
 
@@ -244,6 +222,28 @@
  
 
           
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/setting-up/" title="" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/setting-up/">
+          
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
          
     </ul>
 
@@ -304,6 +304,8 @@
 <ul>
 <li>
 <ul>
+<li><a href="#voice-application-auth">Voice Application Auth</a></li>
+<li><a href="#link-phone-number">Link Phone Number</a></li>
 <li><a href="#incoming-calls">Incoming Calls</a></li>
 <li><a href="#call-events">Call Events</a></li>
 <li><a href="#outgoing-calls">Outgoing Calls</a></li>
@@ -340,6 +342,37 @@
 <div class="notices note" ><p>Voice calls are more complex than text messages because there are far more possibiliites to control the call. Nexmo has uses an instructions set known as Nexmo Call Control Objects (NCCOs) that enable you to tell the platform how to handle a call. An NCCO is either served up to Nexmo in response to a webhook for an incoming call, or is passed with the request to make a new call.</p>
 </div>
 
+
+<h2 id="voice-application-auth">Voice Application Auth</h2>
+
+<p>Next we will create a Nexmo voice application from within NodeRED. The voice application contains a bundle of config for routing incoming calls to your NodeRED instance and also holds the authentication credentials to make outbound calls and other voice API calls.</p>
+
+<ol>
+<li><p>To configure auth for Voice API, we will select a <strong>CreateCall</strong> node from the palette, and open up its properties, click the pencil icon next to the <strong>Add new nexmovoiceapp</strong> menu.</p>
+
+<p><img src="/Create_Call_Config.png" alt="Create Call Node Config" /></p></li>
+
+<li><p>We need to enter a few more details this time:</p>
+
+<ul>
+<li>Name - This is what the application will be called in your Nexmo Dashboard, we recommend something like &ldquo;NodeRED - [Name of your Instance]&rdquo;</li>
+<li>API Key and Secret - Same as before</li>
+<li>AnswerURL - This is the URL that will be called for incoming calls to numbers linked to the application, you need to enter the web address of your NodeRED instance followed by <em>/answer</em> e.g. <strong><a href="https://monkey.workbench.red/answer">https://monkey.workbench.red/answer</a></strong></li>
+<li>EventURL  - Like the AnswerURL this is where call events are sent to, we will use <em>/event</em> for this, eg <strong><a href="https://monkey.workbench.red/event">https://monkey.workbench.red/event</a></strong></li>
+</ul></li>
+
+<li><p>Now click on <strong>Create New Application</strong>, after a few seconds the 2 grey boxes will be filled with an APP ID and Private Key, this means the application has been created on the Nexmo plaform. Click the <strong>Done</strong> button to save this config. You now have a Nexmo Voice Application created on your account and the credentials stored within NodeRED.</p>
+
+<p><img src="/Voice_Auth.png" alt="Voice Application Auth" /></p></li>
+</ol>
+
+<h2 id="link-phone-number">Link Phone Number</h2>
+
+<p>In the nexmo Dashboard we can now link the number you earlier purchased for SMS to your Voice application, goto <a href="https://dashboard.nexmo.com/applications">https://dashboard.nexmo.com/applications</a> and click on the name of the application you just created.</p>
+
+<p>You will then see a screen with that applciations details and at the bottom it will list all the numbers on your account, you should see a <strong>Link</strong> button next to the number you just purchased, Click this and your number will be liknked to your NodeRED application for incomming voice calls.</p>
+
+<p><img src="/link_voice_number.png" alt="Link Voice Number" /></p>
 
 <h2 id="incoming-calls">Incoming Calls</h2>
 
@@ -491,22 +524,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -526,6 +543,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -592,19 +625,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1572351624"></script>
-    <script src="/js/jquery.sticky.js?1572351624"></script>
-    <script src="/js/featherlight.min.js?1572351624"></script>
-    <script src="/js/highlight.pack.js?1572351624"></script>
+    <script src="/js/clipboard.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1573724425"></script>
+    <script src="/js/jquery.sticky.js?1573724425"></script>
+    <script src="/js/featherlight.min.js?1573724425"></script>
+    <script src="/js/highlight.pack.js?1573724425"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1572351624"></script>
-    <script src="/js/learn.js?1572351624"></script>
-    <script src="/js/hugo-learn.js?1572351624"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1573724425"></script>
+    <script src="/js/learn.js?1573724425"></script>
+    <script src="/js/hugo-learn.js?1573724425"></script>
 
-    <link href="/mermaid/mermaid.css?1572351624" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1572351624"></script>
+    <link href="/mermaid/mermaid.css?1573724425" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1573724425"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

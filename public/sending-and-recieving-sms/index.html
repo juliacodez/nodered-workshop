@@ -12,20 +12,20 @@
     <title>Sending and Receiving SMS :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1572351624" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1572351624" rel="stylesheet">
-    <link href="/css/hybrid.css?1572351624" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1572351624" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1572351624" rel="stylesheet">
-    <link href="/css/auto-complete.css?1572351624" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1572351624" rel="stylesheet">
-    <link href="/css/theme.css?1572351624" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1572351624" rel="stylesheet">
+    <link href="/css/nucleus.css?1573724425" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573724425" rel="stylesheet">
+    <link href="/css/hybrid.css?1573724425" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573724425" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573724425" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573724425" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573724425" rel="stylesheet">
+    <link href="/css/theme.css?1573724425" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573724425" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1572351624" rel="stylesheet">
+      <link href="/css/theme-blue.css?1573724425" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1572351624"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573724425"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -95,14 +95,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1572351624"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1572351624"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573724425"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573724425"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1572351624"></script>
+<script type="text/javascript" src="/js/search.js?1573724425"></script>
 
     
   </div>
@@ -111,28 +111,6 @@
     <ul class="topics">
 
         
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/setting-up/" title="Setting Up" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/setting-up/">
-          Setting Up
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
           
           
 
@@ -244,6 +222,28 @@
  
 
           
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/setting-up/" title="" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/setting-up/">
+          
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
          
     </ul>
 
@@ -304,7 +304,10 @@
 <ul>
 <li>
 <ul>
-<li><a href="#handling-an-incoming-webhook">Handling an Incoming Webhook</a></li>
+<li><a href="#setup-basic-auth">Setup Basic Auth</a></li>
+<li><a href="#phone-number-setup">Phone Number Setup</a></li>
+<li><a href="#send-an-sms">Send an SMS</a></li>
+<li><a href="#handling-an-incoming-sms">Handling an Incoming SMS</a></li>
 <li><a href="#sending-an-sms-in-response">Sending an SMS in Response</a></li>
 </ul></li>
 </ul>
@@ -335,7 +338,74 @@
 
 	
 
-<h2 id="handling-an-incoming-webhook">Handling an Incoming Webhook</h2>
+<h2 id="setup-basic-auth">Setup Basic Auth</h2>
+
+<ol>
+<li><p>To set up basic auth drag a &lsquo;Send SMS&rsquo; node from the palette on the left onto the canvas, double click the node to open the properties, and then click on the pencil icon where it says <strong>Add new nexmobasic&hellip;</strong></p>
+
+<p><img src="/SMS_Node_Auth.png" alt="SMS Node Config" /></p></li>
+
+<li><p>In the window that opens enter your API Key and API Secret, Then Click <strong>Add</strong></p>
+
+<p><img src="/Basic_Auth.png" alt="Basic Auth" /></p></li>
+</ol>
+
+<h2 id="phone-number-setup">Phone Number Setup</h2>
+
+<p>Next we will purchase a number and link that to our new voice application and configure a webhook for SMS.</p>
+
+<ol>
+<li><p>First, log in to your Nexmo account at <a href="https://dashboard.nexmo.com">https://dashboard.nexmo.com</a></p></li>
+
+<li><p>From the right hand menu select <strong>Numbers</strong> then <strong>Buy Numbers</strong></p></li>
+
+<li><p>In the Dropdown lists select your country, Then under Features select <strong>SMS &amp; Voice</strong>  and Type <strong>Mobile</strong>, Then click <strong>Search</strong></p>
+
+<p><img src="/Buy_Number.png" alt="Buy a Number" /></p></li>
+
+<li><p>Choose a number and click the <strong>Buy</strong> button. After a few seconds you will see a popup confirming the number has been assigned to your account.</p></li>
+
+<li><p>From the right hand menu select <strong>Your Numbers</strong> You should then see the number you purchased listed. Click on the cog icon under <strong>Manage</strong></p>
+
+<p><img src="/Your_Numbers.png" alt="Your Numbers" /></p></li>
+
+<li><p>Now we will be presented with an interface to configure where  SMSes to this number should be sent.</p></li>
+
+<li><p>For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by <em>/sms</em>  ** e.g. <a href="https://monkey.workbench.red/sms**">https://monkey.workbench.red/sms**</a></p>
+
+<p><img src="/config_number_sms.png" alt="Configure Number for SMS" /></p></li>
+</ol>
+
+<h2 id="send-an-sms">Send an SMS</h2>
+
+<p>Back in our SMS Node we can now setup some parameters for the outgoing SMS, there are 3 things to set, the Destination, the Sender and the content of the message.</p>
+
+
+<div class="notices info" ><p>Where ever a phone number is used with Nexmo it should be in e.164 format, that is with the country code but without any other characters or spaces, for example the us number <code>(212) 555-1212</code> should become <code>12125551212</code> or the UK number 07000 900 123 would become <code>447000900123</code></p>
+</div>
+
+
+<ol>
+<li><p>In the <strong>To</strong> Field enter your mobile number in e.164 format.</p></li>
+
+<li><p>In the <strong>From</strong> Field enter the nexmo number you just purchased</p></li>
+
+<li><p>In the <strong>Text</strong> Fileld enter some text like <code>Hello World</code></p></li>
+</ol>
+
+<p><img src="/configure_sms.png" alt="Configure SMS" /></p>
+
+<p>Now we need something to trigger our Send SMS node and start the flow, the simplest way to do this in NodeRED is to use an <strong>Inject</strong> node, this will send whatever payload you configure whenever you click the grey button on the left of the node, For our Send SMS node we don&rsquo;t really mind what the payload is so just leave that as the default (timestamp)</p>
+
+<p>We also want to log the response from the Nexmo API to our SendSMS request, for this we will use the <strong>Debug</strong> node which will log the msg.payload to the debug panel on the right of the editor.</p>
+
+<p>You flow should now look like this, remember to click <strong>Deploy</strong> to save your flow.</p>
+
+<p><img src="/send_sms_flow.png" alt="Send SMS Flow" /></p>
+
+<p>You can now click the grey button on the inject node to send yourself an SMS 🙌</p>
+
+<h2 id="handling-an-incoming-sms">Handling an Incoming SMS</h2>
 
 <p>SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.</p>
 
@@ -436,25 +506,6 @@
             
                 
                     
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -474,6 +525,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -543,7 +610,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/setting-up/" title="Setting Up"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/" title="Node-RED Workshop"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/voice-calls/" title="Voice Calls" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -556,19 +623,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.min.js?1572351624"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1572351624"></script>
-    <script src="/js/jquery.sticky.js?1572351624"></script>
-    <script src="/js/featherlight.min.js?1572351624"></script>
-    <script src="/js/highlight.pack.js?1572351624"></script>
+    <script src="/js/clipboard.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.min.js?1573724425"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1573724425"></script>
+    <script src="/js/jquery.sticky.js?1573724425"></script>
+    <script src="/js/featherlight.min.js?1573724425"></script>
+    <script src="/js/highlight.pack.js?1573724425"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1572351624"></script>
-    <script src="/js/learn.js?1572351624"></script>
-    <script src="/js/hugo-learn.js?1572351624"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1573724425"></script>
+    <script src="/js/learn.js?1573724425"></script>
+    <script src="/js/hugo-learn.js?1573724425"></script>
 
-    <link href="/mermaid/mermaid.css?1572351624" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1572351624"></script>
+    <link href="/mermaid/mermaid.css?1573724425" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1573724425"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
