@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="generator" content="Hugo 0.59.0" />
+    <meta name="generator" content="Hugo 0.72.0" />
     <meta name="description" content="">
 
 
@@ -12,20 +12,20 @@
     <title>Sending and Receiving SMS :: NodeRED at Vonage Campus</title>
 
     
-    <link href="/css/nucleus.css?1573724425" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1573724425" rel="stylesheet">
-    <link href="/css/hybrid.css?1573724425" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1573724425" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1573724425" rel="stylesheet">
-    <link href="/css/auto-complete.css?1573724425" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1573724425" rel="stylesheet">
-    <link href="/css/theme.css?1573724425" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1573724425" rel="stylesheet">
+    <link href="/css/nucleus.css?1591885683" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1591885683" rel="stylesheet">
+    <link href="/css/hybrid.css?1591885683" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1591885683" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1591885683" rel="stylesheet">
+    <link href="/css/auto-complete.css?1591885683" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1591885683" rel="stylesheet">
+    <link href="/css/theme.css?1591885683" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1591885683" rel="stylesheet">
     
-      <link href="/css/theme-blue.css?1573724425" rel="stylesheet">
+      <link href="/css/theme-blue.css?1591885683" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1573724425"></script>
+    <script src="/js/jquery-3.3.1.min.js?1591885683"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -43,47 +43,77 @@
   <div id="header-wrapper">
     <div id="header">
       <a id="logo" href="https://nodered-workshop.nexmodev.com/">
-<svg width="250px" height="60px" viewBox="0 0 513 129" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    
-    <title>vc-logo-white</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <polygon id="path-1" points="0.515929367 0.290744617 20.8200773 0.290744617 20.8200773 27.8278891 0.515929367 27.8278891"></polygon>
-    </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Vonage-Campus" transform="translate(-844.000000, -259.000000)">
-            <g id="vc-logo-white" transform="translate(844.000000, 259.000000)">
-                <polygon id="Fill-1" fill="#FFFFFF" points="65.0234464 92.7179813 18.8776762 17 0 28.8575082 60.8287467 126 71.3170235 126 129 28.8575082 110.122324 17"></polygon>
-                <polygon id="Fill-2" fill="#FFFFFF" points="233.033707 0 135 60.8292269 135 71.3175865 233.033707 129 245 110.122175 168.587358 65.0239597 245 18.8778252"></polygon>
-                <g id="Group-5" transform="translate(278.000000, 6.000000)">
-                    <polygon id="Fill-3" fill="#FFFFFF" points="8.47928528 27.8731523 2.98427949e-13 1.46860693 5.36171965 1.46860693 10.836469 19.6503399 16.1591421 1.46860693 21.4818151 1.46860693 13.1176146 27.8731523"></polygon>
-                    <g id="Group-35" transform="translate(1.177975, 0.000000)">
-                        <path d="M52.0817389,5.80592126 C48.7350312,5.80592126 47.3663439,8.06908062 47.3663439,14.2550495 C47.3663439,17.7629466 47.7085157,20.215722 48.4308785,21.5358983 C49.1532412,22.857094 50.3708798,23.5360418 52.0817389,23.5360418 C53.7925981,23.5360418 54.97119,22.8937939 55.6935528,21.5736176 C56.4159155,20.2534413 56.7961065,17.8016853 56.7961065,14.2550495 C56.7961065,8.10679994 55.4274191,5.80592126 52.0817389,5.80592126 M52.0817389,0.901389868 C58.1647938,0.901389868 61.928684,5.39100871 61.928684,14.2550495 C61.928684,23.9499349 58.2788511,28.4385343 52.0817389,28.4385343 C45.8846268,28.4385343 42.2337663,23.9499349 42.2337663,14.2550495 C42.2337663,5.39100871 45.9976565,0.901389868 52.0817389,0.901389868" id="Fill-4" fill="#FFFFFF"></path>
-                        <polygon id="Fill-6" fill="#FFFFFF" points="85.9104086 27.8731523 85.9104086 1.46860693 90.6638227 1.46860693 100.093585 18.4045828 100.093585 1.46860693 105.264182 1.46860693 105.264182 27.8731523 100.586806 27.8731523 91.0440137 10.9361569 91.0440137 27.8731523"></polygon>
-                        <path d="M134.912395,18.367679 L140.653279,18.367679 L137.7628,9.31402216 L134.912395,18.367679 Z M126.357072,27.8729484 L135.596739,1.46840304 L140.121011,1.46840304 L149.321632,27.8729484 L143.846882,27.8729484 L142.2881,23.271191 L133.200509,23.271191 L131.641726,27.8729484 L126.357072,27.8729484 Z" id="Fill-8" fill="#FFFFFF"></path>
-                        <path d="M179.577329,18.781878 L179.577329,14.0669627 L190.602866,14.0669627 L190.602866,18.5178427 C190.602866,21.42325 189.691435,23.7995673 187.865491,25.6467947 C186.040574,27.496061 183.683391,28.439044 180.755921,28.439044 C174.557781,28.439044 170.869929,23.9494252 170.869929,14.2555593 C170.869929,5.46593764 174.672866,0.901899589 180.755921,0.901899589 C183.379238,0.901899589 185.585373,1.80818277 187.334251,3.65541015 C189.121149,5.5046764 190.109645,7.80453564 190.29974,10.5590656 L185.508307,11.2002941 C185.166135,7.61695847 183.607353,5.80541154 180.755921,5.80541154 C177.41024,5.80541154 176.002506,8.0685709 176.002506,14.2555593 C176.002506,17.7634563 176.383725,20.2152123 177.106088,21.5353885 C177.82845,22.8565843 179.045061,23.5355321 180.755921,23.5355321 C183.912533,23.5355321 185.432269,21.649566 185.470288,18.781878 L179.577329,18.781878 Z" id="Fill-10" fill="#FFFFFF"></path>
-                        <polygon id="Fill-12" fill="#FFFFFF" points="215.612647 27.8731523 215.612647 1.46860693 232.45716 1.46860693 232.45716 6.37109944 220.746252 6.37109944 220.746252 11.5396661 231.391598 11.5396661 231.391598 16.443178 220.746252 16.443178 220.746252 22.9686209 232.45716 22.9686209 232.45716 27.8731523"></polygon>
-                        <path d="M19.6198043,64.1967581 C19.4687555,66.87483 18.5172506,69.1390088 16.7293257,70.9862362 C14.9804474,72.7977831 12.7763676,73.7020274 10.077012,73.7020274 C3.87887227,73.7020274 0.191020254,69.213428 0.191020254,59.5185426 C0.191020254,50.7299404 3.99292955,46.1648829 10.077012,46.1648829 C12.7763676,46.1648829 14.9804474,47.0711661 16.7293257,48.9194129 C18.5172506,50.7299404 19.4687555,52.9930998 19.6198043,55.6721911 L14.8293986,56.4632775 C14.4872268,52.8799418 12.9274164,51.0694143 10.077012,51.0694143 C6.73030424,51.0694143 5.3235978,53.3325737 5.3235978,59.5185426 C5.3235978,63.0274591 5.70378873,65.479215 6.4261515,66.7993913 C7.14851427,68.1205871 8.36512524,68.7995349 10.077012,68.7995349 C12.9274164,68.7995349 14.4872268,66.9879879 14.8293986,63.4046523 L19.6198043,64.1967581 Z" id="Fill-14" fill="#FFFFFF"></path>
-                        <path d="M49.3823833,63.6312741 L55.1232664,63.6312741 L52.2327878,54.5776172 L49.3823833,63.6312741 Z M40.8270599,73.1365434 L50.066727,46.731998 L54.5909991,46.731998 L63.7916196,73.1365434 L58.3168702,73.1365434 L56.7580874,68.534786 L47.6704966,68.534786 L46.1117138,73.1365434 L40.8270599,73.1365434 Z" id="Fill-16" fill="#FFFFFF"></path>
-                        <polygon id="Fill-18" fill="#FFFFFF" points="85.6826023 73.1368492 85.6826023 46.7323039 90.5870653 46.7323039 95.150384 60.2735407 99.7126751 46.7323039 104.618166 46.7323039 104.618166 73.1368492 99.4845606 73.1368492 99.4845606 56.7646243 96.785205 64.6122823 93.515563 64.6122823 90.8151798 56.7646243 90.8151798 73.1368492"></polygon>
-                        <path d="M134.797927,58.4255997 L139.28418,58.4255997 C141.071078,58.4255997 142.439765,56.8780881 142.439765,55.0308607 C142.439765,52.9185786 140.95702,51.6351022 139.28418,51.6351022 L134.797927,51.6351022 L134.797927,58.4255997 Z M129.66535,73.137155 L129.66535,46.7315903 L139.246161,46.7315903 C141.527307,46.7315903 143.467308,47.523696 145.101101,49.1456269 C146.73695,50.7298385 147.57337,52.6912433 147.57337,55.0308607 C147.57337,57.3694587 146.773941,59.3308635 145.216186,60.9527944 C143.656376,62.5370059 141.641364,63.3291117 139.246161,63.3291117 L134.797927,63.3291117 L134.797927,73.137155 L129.66535,73.137155 Z" id="Fill-20" fill="#FFFFFF"></path>
-                        <path d="M170.755974,46.7318961 L175.889579,46.7318961 L175.889579,63.9329267 C175.889579,66.9127532 177.448362,68.7987193 180.603947,68.7987193 C183.759532,68.7987193 185.319342,66.8750339 185.319342,64.0073459 L185.319342,46.7318961 L190.45192,46.7318961 L190.45192,63.7820494 C190.45192,66.6864373 189.538434,69.0627546 187.714545,70.9110014 C185.889628,72.7592482 183.532445,73.7022313 180.603947,73.7022313 C177.676477,73.7022313 175.318265,72.7592482 173.494377,70.9110014 C171.66946,69.0627546 170.755974,66.6864373 170.755974,63.7820494 L170.755974,46.7318961 Z" id="Fill-22" fill="#FFFFFF"></path>
-                        <g id="Group-26" transform="translate(212.701412, 45.874852)">
-                            <mask id="mask-2" fill="white">
-                                <use xlink:href="#path-1"></use>
-                            </mask>
-                            <g id="Clip-25"></g>
-                            <path d="M5.26934353,17.1900206 C5.42039236,18.3593196 5.57349628,19.0382674 6.06671694,20.2075664 C6.82812634,21.67862 8.19681369,22.9243771 11.0482457,22.9243771 C13.6715631,22.9243771 15.6876025,21.7550781 15.6876025,19.4541994 C15.6876025,17.4540559 14.3189152,16.361215 10.8201311,15.4549318 C8.08275641,14.7382647 6.33387813,14.0970362 4.62199141,12.9277372 C2.91113222,11.7207188 2.03669309,9.94689123 2.03669309,7.5705739 C2.03669309,5.57246924 2.79810249,3.87408027 4.35585776,2.44074601 C5.91566811,1.00741175 8.08275641,0.290744617 10.8201311,0.290744617 C15.4204414,0.290744617 19.1093209,2.85565856 20.2118746,7.5705739 L15.4584604,8.58899561 C14.9652398,6.77846812 13.4434485,5.19425657 10.8201311,5.19425657 C8.57700462,5.19425657 7.17029818,6.25141704 7.17029818,7.5705739 C7.17029818,9.04264692 8.76710009,9.68387541 12.2658842,10.7400164 C14.8121359,11.5321222 16.5990332,12.2854892 17.5875297,12.964437 C19.7556455,14.4365101 20.8201801,16.5865115 20.8201801,19.4541994 C20.8201801,21.9426553 19.9447134,23.9805182 18.1588436,25.5270104 C16.3719462,27.0735026 14.0137349,27.8278891 11.0482457,27.8278891 C7.89266095,27.8278891 5.42039236,26.884906 3.93764773,25.6401684 C1.58046397,23.5278863 0.783090561,20.622479 0.515929367,18.0585845 L5.26934353,17.1900206 Z" id="Fill-24" fill="#FFFFFF" mask="url(#mask-2)"></path>
-                        </g>
-                        <path d="M0.685473971,118.400342 L0.685473971,113.420372 C0.685473971,110.969636 1.25576037,109.08265 2.43435225,107.762474 C3.61294413,106.404578 5.58890942,105.272999 8.32731166,104.330015 C10.0391984,103.726506 10.91261,103.424752 12.1682676,102.707065 C13.4228977,101.953698 14.0301756,101.086154 14.0301756,99.9912739 C14.0301756,97.729134 12.7375264,96.3335191 10.1522281,96.3335191 C7.41485343,96.3335191 5.89408971,97.9921498 5.58890942,101.27475 L0.8365228,100.444925 C0.951607622,97.842292 1.90208495,95.6922906 3.61294413,93.9949211 C5.36182241,92.2975515 7.52891071,91.4289877 10.1522281,91.4289877 C12.6995074,91.4289877 14.8296041,92.2210934 16.5404633,93.7675857 C18.2893416,95.3140779 19.1627532,97.3896601 19.1627532,99.9912739 C19.1627532,104.028261 16.3873594,106.29142 11.103733,108.064228 C9.12571261,108.705457 7.94712073,109.346685 7.22475796,109.913495 C6.88258613,110.17753 6.65447157,110.517004 6.4643761,110.931916 C6.16022336,111.798441 6.16022336,112.176654 6.16022336,113.495811 L19.3918953,113.495811 L19.3918953,118.400342 L0.685473971,118.400342 Z" id="Fill-27" fill="#FFFFFF"></path>
-                        <path d="M78.3483082,113.571963 C78.9196222,113.911437 79.6789765,114.062314 80.5924623,114.062314 C82.3033215,114.062314 83.4808858,113.421086 84.2032486,112.10091 C84.9256113,110.780733 85.3058023,108.327958 85.3058023,104.782342 C85.3058023,102.783217 85.1547534,101.161287 84.8495731,99.9165489 L78.3483082,113.571963 Z M82.9105994,96.8990031 C82.2653024,96.5207904 81.503893,96.3332132 80.5924623,96.3332132 C77.2457545,96.3332132 75.8770672,98.5963726 75.8770672,104.782342 C75.8770672,107.309536 76.0291436,109.234241 76.3713154,110.554417 L82.9105994,96.8990031 Z M80.5924623,91.4286818 C86.6755171,91.4286818 90.4394073,95.9183007 90.4394073,104.782342 C90.4394073,114.477227 86.7895744,118.965826 80.5924623,118.965826 C74.3943226,118.965826 70.7444896,114.477227 70.7444896,104.782342 C70.7444896,95.9183007 74.5083798,91.4286818 80.5924623,91.4286818 L80.5924623,91.4286818 Z" id="Fill-29" fill="#FFFFFF"></path>
-                        <polygon id="Fill-31" fill="#FFFFFF" points="143.159764 118.400342 143.159764 113.495811 150.573487 113.495811 150.573487 97.842292 144.832604 101.425628 144.832604 95.7677292 150.953678 91.9957969 155.707093 91.9957969 155.707093 113.495811 162.740625 113.495811 162.740625 118.400342"></polygon>
-                        <path d="M225.764567,103.462165 C226.640034,102.820937 227.095235,101.802515 227.095235,100.369181 C227.095235,98.9735658 226.640034,97.9551441 225.688529,97.3139156 C224.738051,96.6726871 223.825593,96.3332132 222.951154,96.3332132 C221.734543,96.3332132 218.693016,96.9744417 218.693016,100.369181 C218.693016,103.76392 221.810581,104.406168 223.10323,104.406168 C224.015689,104.406168 224.890128,104.103394 225.764567,103.462165 L225.764567,103.462165 Z M218.768026,109.950908 C219.225283,112.968454 220.403875,114.062314 223.179269,114.062314 C226.182777,114.062314 227.704568,111.912313 227.742587,107.611291 L227.057216,108.064942 C226.791082,108.252519 226.182777,108.479855 225.2323,108.781609 C224.319841,109.083364 223.407383,109.234241 222.456906,109.234241 C220.213779,109.234241 218.160748,108.479855 216.296785,106.932343 C214.472896,105.38687 213.55941,103.19813 213.55941,100.369181 C213.55941,97.7665475 214.434877,95.6542654 216.183755,93.9568959 C217.932634,92.2595264 220.099722,91.4286818 222.647001,91.4286818 C229.148266,91.4286818 232.837146,95.8418426 232.837146,105.349151 C232.837146,114.439508 229.224304,118.965826 223.179269,118.965826 C218.045663,118.965826 214.928098,116.589509 213.977621,110.743014 L218.768026,109.950908 Z" id="Fill-33" fill="#FFFFFF"></path>
-                    </g>
-                </g>
-            </g>
-        </g>
-    </g>
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+    viewBox="0 0 242.33 62.86" style="enable-background:new 0 0 242.33 62.86;" xml:space="preserve">
+<style type="text/css">
+   .st0{fill:#FFF;}
+</style>
+<g>
+   <g>
+       <path class="st0" d="M20.15,21.59L11.17,1.66H1.8l13.45,30.27c0.06,0.13,0.24,0.13,0.3,0L20.15,21.59z"/>
+       <path class="st0" d="M39.74,1.66c0,0-12.16,27.44-13.68,30.79c-3.64,8.03-6.33,10.03-9.08,10.46c-0.03,0-0.04,0.03-0.04,0.05
+           c0,0.03,0.02,0.05,0.05,0.05h8.59c3.78,0,6.37-2.54,10.01-10.57c1.27-2.81,13.7-30.79,13.7-30.79H39.74z"/>
+   </g>
+   <path class="st0" d="M98.79,12c-6.07,0-9.97,3.93-9.97,10.34c0,6.41,3.9,10.34,9.97,10.34c6.05,0,9.97-3.93,9.97-10.34
+       C108.76,15.93,104.84,12,98.79,12z M98.79,29.42c-3.87,0-6.41-2.52-6.41-7.07s2.54-7.07,6.41-7.07c3.86,0,6.41,2.52,6.41,7.07
+       S102.65,29.42,98.79,29.42z"/>
+   <path class="st0" d="M129.34,12.46v19.77h-4.11l-9.78-14.49v14.49h-3.5V12.46h4.12l9.78,14.59V12.46H129.34z"/>
+   <polygon class="st0" points="189.89,15.77 189.89,12.46 175.68,12.46 175.68,32.23 189.89,32.23 189.89,28.92 179.18,28.92 
+       179.18,23.72 189.06,23.72 189.06,20.41 179.18,20.41 179.18,15.77 	"/>
+   <path class="st0" d="M84.42,12.46l-7.09,15.56c-0.04,0.08-0.15,0.08-0.19,0l-7.09-15.56h-4.01c0,0,6.93,15.29,7.47,16.48
+       c1.09,2.41,2,3.52,3.72,3.52c1.72,0,2.62-1.11,3.72-3.52c0.54-1.19,7.47-16.48,7.47-16.48H84.42z"/>
+   <path class="st0" d="M145.64,15.77c-1.06-2.43-1.85-3.52-3.5-3.52l0,0c0,0,0,0,0,0c0,0,0,0,0,0l0,0c-1.65,0-2.44,1.1-3.5,3.52
+       c-0.51,1.18-7.16,16.48-7.16,16.48h3.69l2.04-4.79h9.84l2.04,4.79h3.69C152.8,32.25,146.16,16.95,145.64,15.77z M138.64,24.14
+       l3.41-8c0.04-0.08,0.15-0.08,0.19,0l3.41,8H138.64z"/>
+   <path class="st0" d="M162.48,21.5v3h5.93c-0.26,2.66-2.8,4.88-5.81,4.88c-3.56,0-6.14-2.6-6.14-6.89c0,0,0,0,0,0l0,0c0,0,0,0,0,0
+       c0-4.47,2.39-7.21,6.46-7.21c2.43,0,4.43,1.16,5.1,3.17h3.62c-0.78-4.04-4.38-6.44-8.72-6.44c-6.19,0-10.02,4.05-10.02,10.56
+       c0,6.31,4.18,10.12,9.4,10.12c4.48,0,6.18-2.61,6.65-3.44v2.98h3.1V21.5H162.48z"/>
+</g>
+<g>
+   <g>
+       <path class="st0" d="M79.59,46.41v10.81h-1.77l-5.8-8.49v8.49h-1.55V46.41h1.77l5.81,8.53v-8.53H79.59z"/>
+       <path class="st0" d="M89.43,53.73h-6.26c0.08,1.3,0.98,2.28,2.59,2.28c1.23,0,1.94-0.57,2.37-1.23l1.18,0.69
+           c-0.74,1.08-1.87,1.86-3.62,1.86c-2.55,0-4-1.64-4-4.09c0-2.58,1.61-4.19,4.05-4.19c2.23,0,3.7,1.36,3.7,3.6V53.73z M83.18,52.49
+           h4.76c-0.05-1.41-0.87-2.1-2.22-2.1C84.22,50.39,83.36,51.23,83.18,52.49z"/>
+       <path class="st0" d="M96.62,57.22l-2.25-3.06l-2.25,3.06h-1.88l3.19-4.09l-3.04-3.91h1.86l2.11,2.87l2.12-2.87h1.86l-3.05,3.91
+           l3.2,4.09H96.62z"/>
+       <path class="st0" d="M101.34,49.21v1.32c0.41-0.76,1.17-1.47,2.62-1.47c1.37,0,2.12,0.66,2.5,1.81c0.42-0.95,1.29-1.81,2.96-1.81
+           c1.89,0,2.93,1.1,2.93,2.79v5.37h-1.49v-4.74c0-1.31-0.63-2.04-1.82-2.04c-1.4,0-2.19,1.04-2.19,2.33v4.45h-1.49v-4.74
+           c0-1.3-0.61-2.04-1.79-2.04c-1.41,0-2.21,1.05-2.21,2.33v4.45h-1.49v-8.01H101.34z"/>
+       <path class="st0" d="M122.25,53.21c0,2.5-1.57,4.13-4.03,4.13c-2.45,0-4.03-1.64-4.03-4.13c0-2.5,1.58-4.15,4.03-4.15
+           C120.68,49.06,122.25,50.71,122.25,53.21z M115.69,53.21c0,1.77,0.99,2.81,2.53,2.81c1.55,0,2.54-1.03,2.54-2.81
+           c0-1.78-0.99-2.81-2.54-2.81C116.68,50.4,115.69,51.43,115.69,53.21z"/>
+       <path class="st0" d="M129.45,47.89h-1.7v-1.73h1.7V47.89z M129.34,57.22h-1.49v-8.01h1.49V57.22z"/>
+       <path class="st0" d="M137.1,51.67c-0.33-0.86-1.14-1.35-2.37-1.35c-1.15,0-1.81,0.43-1.81,1.09c0,0.85,1.08,0.98,2.3,1.12
+           c1.55,0.18,3.36,0.37,3.36,2.17c0,1.61-1.45,2.63-3.46,2.63c-1.77,0-3.28-0.78-3.84-2.26l1.36-0.51c0.38,1.07,1.43,1.52,2.53,1.52
+           c1.12,0,1.92-0.47,1.92-1.19c0-0.85-1.09-0.99-2.31-1.14c-1.56-0.2-3.34-0.42-3.34-2.22c0-1.56,1.32-2.47,3.35-2.47
+           c1.97,0,3.17,0.87,3.62,2.11L137.1,51.67z"/>
+       <path class="st0" d="M145.67,49.21v1.35c0.44-0.78,1.22-1.5,2.79-1.5c1.97,0,3.09,1.12,3.09,2.9v5.26h-1.49v-4.67
+           c0-1.34-0.66-2.1-1.96-2.1c-1.58,0-2.44,1.12-2.44,2.44v4.34h-1.49v-8.01H145.67z"/>
+       <path class="st0" d="M161.47,53.21c0,2.5-1.57,4.13-4.03,4.13c-2.45,0-4.03-1.64-4.03-4.13c0-2.5,1.58-4.15,4.03-4.15
+           C159.9,49.06,161.47,50.71,161.47,53.21z M154.91,53.21c0,1.77,0.99,2.81,2.53,2.81c1.55,0,2.54-1.03,2.54-2.81
+           c0-1.78-0.99-2.81-2.54-2.81C155.89,50.4,154.91,51.43,154.91,53.21z"/>
+       <path class="st0" d="M174.94,49.21l-2.77,8.01h-1.51l-2.04-5.88l-2.04,5.88h-1.51l-2.77-8.01h1.58l1.95,6.34l2.02-6.34h1.54
+           l2.02,6.34l1.95-6.34H174.94z"/>
+       <path class="st0" d="M189.3,46.41l-4.31,10.81h-1.72l-4.31-10.81h1.67l3.51,8.97l3.51-8.97H189.3z"/>
+       <path class="st0" d="M197.94,53.21c0,2.5-1.57,4.13-4.03,4.13c-2.45,0-4.03-1.64-4.03-4.13c0-2.5,1.58-4.15,4.03-4.15
+           C196.37,49.06,197.94,50.71,197.94,53.21z M191.37,53.21c0,1.77,0.99,2.81,2.53,2.81c1.55,0,2.54-1.03,2.54-2.81
+           c0-1.78-0.99-2.81-2.54-2.81C192.36,50.4,191.37,51.43,191.37,53.21z"/>
+       <path class="st0" d="M201.38,49.21v1.35c0.44-0.78,1.22-1.5,2.79-1.5c1.97,0,3.09,1.12,3.09,2.9v5.26h-1.49v-4.67
+           c0-1.34-0.66-2.1-1.96-2.1c-1.58,0-2.44,1.12-2.44,2.44v4.34h-1.49v-8.01H201.38z"/>
+       <path class="st0" d="M216.44,51.66v5.57h-1.47v-1.27c-0.63,0.94-1.69,1.39-3,1.39c-1.82,0-2.85-0.89-2.85-2.4
+           c0-2.1,1.99-2.23,3.66-2.38c1.27-0.11,2.18-0.22,2.18-1.04c0-0.69-0.64-1.13-1.83-1.13c-1.26,0-2.1,0.51-2.49,1.42l-1.37-0.47
+           c0.54-1.41,1.89-2.28,3.87-2.28C215.26,49.06,216.44,50.06,216.44,51.66z M214.96,54v-0.68c-0.63,0.23-1.39,0.32-2.09,0.39
+           c-1.25,0.13-2.26,0.19-2.26,1.2c0,0.82,0.65,1.11,1.61,1.11C213.76,56.02,214.96,55.28,214.96,54z"/>
+       <path class="st0" d="M226.38,56.74c0,1.95-1.51,3.4-3.99,3.4c-2.07,0-3.5-1-3.96-2.47l1.41-0.44c0.35,1.03,1.25,1.59,2.56,1.59
+           c1.59,0,2.5-0.81,2.5-2.03v-1.53c-0.54,1.02-1.47,1.51-2.79,1.51c-2.6,0-3.79-1.88-3.79-3.86c0-1.98,1.18-3.84,3.8-3.84
+           c1.31,0,2.24,0.46,2.78,1.46v-1.31h1.49V56.74z M219.81,52.9c0,1.48,1,2.53,2.55,2.53c1.56,0,2.53-1.06,2.53-2.53
+           c0-1.47-0.97-2.5-2.53-2.5S219.81,51.43,219.81,52.9z"/>
+       <path class="st0" d="M235.99,53.73h-6.26c0.08,1.3,0.98,2.28,2.59,2.28c1.23,0,1.94-0.57,2.37-1.23l1.18,0.69
+           c-0.74,1.08-1.87,1.86-3.62,1.86c-2.55,0-4-1.64-4-4.09c0-2.58,1.61-4.19,4.05-4.19c2.23,0,3.7,1.36,3.7,3.6V53.73z M229.74,52.49
+           h4.76c-0.05-1.41-0.87-2.1-2.22-2.1C230.78,50.39,229.92,51.23,229.74,52.49z"/>
+   </g>
+</g>
 </svg>
 </a>
 
@@ -95,14 +125,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1573724425"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1573724425"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1591885683"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1591885683"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/nodered-workshop.nexmodev.com\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1573724425"></script>
+<script type="text/javascript" src="/js/search.js?1591885683"></script>
 
     
   </div>
@@ -111,6 +141,28 @@
     <ul class="topics">
 
         
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/setting-up/" title="Setting Up" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/setting-up/">
+          Setting Up
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
           
           
 
@@ -184,28 +236,6 @@
  
   
     
-    <li data-nav-id="/badge-hacking/" title="Badge Hacking" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/badge-hacking/">
-          Badge Hacking
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
     <li data-nav-id="/further-reading/" title="Further Reading" class="dd-item 
         
         
@@ -213,28 +243,6 @@
         ">
       <a href="/further-reading/">
           Further Reading
-          
-      </a>
-      
-              
-    </li>
-  
- 
-
-          
-          
-
-
- 
-  
-    
-    <li data-nav-id="/setting-up/" title="" class="dd-item 
-        
-        
-        
-        ">
-      <a href="/setting-up/">
-          
           
       </a>
       
@@ -301,16 +309,13 @@
                     <div class="progress">
     <div class="wrapper">
 <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#setup-basic-auth">Setup Basic Auth</a></li>
-<li><a href="#phone-number-setup">Phone Number Setup</a></li>
-<li><a href="#send-an-sms">Send an SMS</a></li>
-<li><a href="#handling-an-incoming-sms">Handling an Incoming SMS</a></li>
-<li><a href="#sending-an-sms-in-response">Sending an SMS in Response</a></li>
-</ul></li>
-</ul>
+  <ul>
+    <li><a href="#setup-basic-auth">Setup Basic Auth</a></li>
+    <li><a href="#phone-number-setup">Phone Number Setup</a></li>
+    <li><a href="#send-an-sms">Send an SMS</a></li>
+    <li><a href="#handling-an-incoming-sms">Handling an Incoming SMS</a></li>
+    <li><a href="#sending-an-sms-in-response">Sending an SMS in Response</a></li>
+  </ul>
 </nav>
     </div>
 </div>
@@ -336,135 +341,136 @@
 
 
 
-	
-
-<h2 id="setup-basic-auth">Setup Basic Auth</h2>
-
+	<h2 id="setup-basic-auth">Setup Basic Auth</h2>
 <ol>
-<li><p>To set up basic auth drag a &lsquo;Send SMS&rsquo; node from the palette on the left onto the canvas, double click the node to open the properties, and then click on the pencil icon where it says <strong>Add new nexmobasic&hellip;</strong></p>
-
-<p><img src="/SMS_Node_Auth.png" alt="SMS Node Config" /></p></li>
-
-<li><p>In the window that opens enter your API Key and API Secret, Then Click <strong>Add</strong></p>
-
-<p><img src="/Basic_Auth.png" alt="Basic Auth" /></p></li>
+<li>
+<p>To set up basic auth drag a &lsquo;Send SMS&rsquo; node from the palette on the left onto the canvas, double click the node to open the properties, and then click on the pencil icon where it says <strong>Add new nexmobasic&hellip;</strong></p>
+<p><img src="/SMS_Node_Auth.png" alt="SMS Node Config"></p>
+</li>
+<li>
+<p>In the window that opens enter your API Key and API Secret, Then Click <strong>Add</strong></p>
+<p><img src="/Basic_Auth.png" alt="Basic Auth"></p>
+</li>
 </ol>
-
 <h2 id="phone-number-setup">Phone Number Setup</h2>
-
 <p>Next we will purchase a number and link that to our new voice application and configure a webhook for SMS.</p>
-
 <ol>
-<li><p>First, log in to your Nexmo account at <a href="https://dashboard.nexmo.com">https://dashboard.nexmo.com</a></p></li>
-
-<li><p>From the right hand menu select <strong>Numbers</strong> then <strong>Buy Numbers</strong></p></li>
-
-<li><p>In the Dropdown lists select your country, Then under Features select <strong>SMS &amp; Voice</strong>  and Type <strong>Mobile</strong>, Then click <strong>Search</strong></p>
-
-<p><img src="/Buy_Number.png" alt="Buy a Number" /></p></li>
-
-<li><p>Choose a number and click the <strong>Buy</strong> button. After a few seconds you will see a popup confirming the number has been assigned to your account.</p></li>
-
-<li><p>From the right hand menu select <strong>Your Numbers</strong> You should then see the number you purchased listed. Click on the cog icon under <strong>Manage</strong></p>
-
-<p><img src="/Your_Numbers.png" alt="Your Numbers" /></p></li>
-
-<li><p>Now we will be presented with an interface to configure where  SMSes to this number should be sent.</p></li>
-
-<li><p>For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by <em>/sms</em>  ** e.g. <a href="https://monkey.workbench.red/sms**">https://monkey.workbench.red/sms**</a></p>
-
-<p><img src="/config_number_sms.png" alt="Configure Number for SMS" /></p></li>
+<li>
+<p>First, log in to your Nexmo account at <a href="https://dashboard.nexmo.com">https://dashboard.nexmo.com</a></p>
+</li>
+<li>
+<p>From the right hand menu select <strong>Numbers</strong> then <strong>Buy Numbers</strong></p>
+</li>
+<li>
+<p>In the Dropdown lists select your country, Then under Features select <strong>SMS &amp; Voice</strong>  and Type <strong>Mobile</strong>, Then click <strong>Search</strong></p>
+<p><img src="/Buy_Number.png" alt="Buy a Number"></p>
+</li>
+<li>
+<p>Choose a number and click the <strong>Buy</strong> button. After a few seconds you will see a popup confirming the number has been assigned to your account.</p>
+</li>
+<li>
+<p>From the right hand menu select <strong>Your Numbers</strong> You should then see the number you purchased listed. Click on the cog icon under <strong>Manage</strong></p>
+<p><img src="/Your_Numbers.png" alt="Your Numbers"></p>
+</li>
+<li>
+<p>Now we will be presented with an interface to configure where  SMSes to this number should be sent.</p>
+</li>
+<li>
+<p>For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by <em>/sms</em>  ** e.g. <a href="https://monkey.workbench.red/sms">https://monkey.workbench.red/sms</a>**</p>
+<p><img src="/config_number_sms.png" alt="Configure Number for SMS"></p>
+</li>
 </ol>
-
 <h2 id="send-an-sms">Send an SMS</h2>
-
 <p>Back in our SMS Node we can now setup some parameters for the outgoing SMS, there are 3 things to set, the Destination, the Sender and the content of the message.</p>
-
 
 <div class="notices info" ><p>Where ever a phone number is used with Nexmo it should be in e.164 format, that is with the country code but without any other characters or spaces, for example the us number <code>(212) 555-1212</code> should become <code>12125551212</code> or the UK number 07000 900 123 would become <code>447000900123</code></p>
 </div>
 
-
 <ol>
-<li><p>In the <strong>To</strong> Field enter your mobile number in e.164 format.</p></li>
-
-<li><p>In the <strong>From</strong> Field enter the nexmo number you just purchased</p></li>
-
-<li><p>In the <strong>Text</strong> Fileld enter some text like <code>Hello World</code></p></li>
+<li>
+<p>In the <strong>To</strong> Field enter your mobile number in e.164 format.</p>
+</li>
+<li>
+<p>In the <strong>From</strong> Field enter the nexmo number you just purchased</p>
+</li>
+<li>
+<p>In the <strong>Text</strong> Fileld enter some text like <code>Hello World</code></p>
+</li>
 </ol>
-
-<p><img src="/configure_sms.png" alt="Configure SMS" /></p>
-
+<p><img src="/configure_sms.png" alt="Configure SMS"></p>
 <p>Now we need something to trigger our Send SMS node and start the flow, the simplest way to do this in NodeRED is to use an <strong>Inject</strong> node, this will send whatever payload you configure whenever you click the grey button on the left of the node, For our Send SMS node we don&rsquo;t really mind what the payload is so just leave that as the default (timestamp)</p>
-
 <p>We also want to log the response from the Nexmo API to our SendSMS request, for this we will use the <strong>Debug</strong> node which will log the msg.payload to the debug panel on the right of the editor.</p>
-
 <p>You flow should now look like this, remember to click <strong>Deploy</strong> to save your flow.</p>
-
-<p><img src="/send_sms_flow.png" alt="Send SMS Flow" /></p>
-
+<p><img src="/send_sms_flow.png" alt="Send SMS Flow"></p>
 <p>You can now click the grey button on the inject node to send yourself an SMS 🙌</p>
-
 <h2 id="handling-an-incoming-sms">Handling an Incoming SMS</h2>
-
 <p>SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.</p>
-
 <ol>
-<li><p>From the <strong>network</strong> section of the palette drag an <strong>http in</strong> node onto your canvas. Double click to open the properties, then make sure that the Method is set to <strong>GET</strong>.</p></li>
-
-<li><p>In the URL box enter <code>/sms</code> this corresponds to the address we configured in the dashboard for your phone number earlier.</p></li>
-
-<li><p>Connect an <strong>http response</strong> node from the network section of the palette to your original <strong>http in</strong> input node.
+<li>
+<p>From the <strong>network</strong> section of the palette drag an <strong>http in</strong> node onto your canvas. Double click to open the properties, then make sure that the Method is set to <strong>GET</strong>.</p>
+</li>
+<li>
+<p>In the URL box enter <code>/sms</code> this corresponds to the address we configured in the dashboard for your phone number earlier.</p>
+</li>
+<li>
+<p>Connect an <strong>http response</strong> node from the network section of the palette to your original <strong>http in</strong> input node.
 
 <div class="notices info" ><p>HTTP Input nodes need a coresponding output node, otherwise the HTTP request won&rsquo;t receive a response. For SMS Webhooks Nexmo doesn&rsquo;t particuarly care about the content of the response so long as it returns a success code.</p>
 </div>
-</p></li>
-
-<li><p>Add a <strong>debug</strong> node from the <strong>common</strong> section and connect it to the <strong>http in.</strong>. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
-<img src="/SMS_Webhook.png" alt="Inbound SMS" /></p></li>
-
-<li><p>Click the red <strong>Deploy</strong> button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you&rsquo;ll need to do this often as you work through these flows.</p></li>
-
-<li><p>Now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.</p></li>
+</p>
+</li>
+<li>
+<p>Add a <strong>debug</strong> node from the <strong>common</strong> section and connect it to the <strong>http in.</strong>. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
+<img src="/SMS_Webhook.png" alt="Inbound SMS"></p>
+</li>
+<li>
+<p>Click the red <strong>Deploy</strong> button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you&rsquo;ll need to do this often as you work through these flows.</p>
+</li>
+<li>
+<p>Now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.</p>
+</li>
 </ol>
-
 <h2 id="sending-an-sms-in-response">Sending an SMS in Response</h2>
-
 
 <div class="notices note" ><p>SMS doesn&rsquo;t really have the concept of replies, however we can send a new SMS in response to an incoming message, using the sender details.</p>
 </div>
 
-
 <ol>
-<li><p>From the <strong>nexmo</strong> section of the pallette drag a <strong>Send SMS</strong> node onto your canvas and connect the http input node to the Send SMS one.</p></li>
-
-<li><p>Open the properties for the Send SMS node, select your API key as the <strong>Nexmo Credentials</strong>.
+<li>
+<p>From the <strong>nexmo</strong> section of the pallette drag a <strong>Send SMS</strong> node onto your canvas and connect the http input node to the Send SMS one.</p>
+</li>
+<li>
+<p>Open the properties for the Send SMS node, select your API key as the <strong>Nexmo Credentials</strong>.
 
 <div class="notices tip" ><p>You will notice that next to the <em>To</em>, <em>From</em> and <em>Text</em> fields there are <strong>{}</strong> symbols, this is to indicate that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow.</p>
 </div>
-</p></li>
-
-<li><p>In the previous section you viewed the details of the incoming SMS in your debug window, this contained the <strong>msg.payload</strong> object with its own properties. We will use these to setup our response message:</p>
-
+</p>
+</li>
+<li>
+<p>In the previous section you viewed the details of the incoming SMS in your debug window, this contained the <strong>msg.payload</strong> object with its own properties. We will use these to setup our response message:</p>
 <ul>
 <li><strong>msisdn</strong> was the number that sent the message to your application</li>
 <li><strong>to</strong> is your Nexmo number</li>
 <li><strong>text</strong>contains the contents of the message.</li>
-</ul></li>
-
-<li><p>In the <strong>To</strong> field for Send SMS enter <code>{{msg.payload.msisdn}}</code> so that we use the sender of the original message as our recipient in the response.</p></li>
-
-<li><p>In the <strong>From</strong> field enter <code>{{msg.payload.to}}</code> so that the response appears to come from the same number that the first message was sent to.</p></li>
-
-<li><p>In <strong>Text</strong> enter <code>You said {{msg.payload.text}}</code>. You will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.</p>
-
-<p><img src="/Response_SMS.png" alt="Response SMS" /></p></li>
-
-<li><p>Click the <strong>Done</strong> button Then click <strong>Deploy</strong>.</p></li>
-
-<li><p>If you now send another message to your Nexmo number you should get back a message in response.</p></li>
+</ul>
+</li>
+<li>
+<p>In the <strong>To</strong> field for Send SMS enter <code>{{msg.payload.msisdn}}</code> so that we use the sender of the original message as our recipient in the response.</p>
+</li>
+<li>
+<p>In the <strong>From</strong> field enter <code>{{msg.payload.to}}</code> so that the response appears to come from the same number that the first message was sent to.</p>
+</li>
+<li>
+<p>In <strong>Text</strong> enter <code>You said {{msg.payload.text}}</code>. You will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.</p>
+<p><img src="/Response_SMS.png" alt="Response SMS"></p>
+</li>
+<li>
+<p>Click the <strong>Done</strong> button Then click <strong>Deploy</strong>.</p>
+</li>
+<li>
+<p>If you now send another message to your Nexmo number you should get back a message in response.</p>
+</li>
 </ol>
-
 <p><strong>That`s the basics of SMS messaging with Nexmo and NodeRED</strong></p>
 
 
@@ -506,23 +512,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
                     
@@ -542,6 +531,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -557,6 +547,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -610,7 +603,7 @@
 	 
 	 
 		
-			<a class="nav nav-prev" href="/" title="Node-RED Workshop"> <i class="fa fa-chevron-left"></i></a>
+			<a class="nav nav-prev" href="/setting-up/" title="Setting Up"> <i class="fa fa-chevron-left"></i></a>
 		
 		
 			<a class="nav nav-next" href="/voice-calls/" title="Voice Calls" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
@@ -623,19 +616,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1573724425"></script>
-    <script src="/js/perfect-scrollbar.min.js?1573724425"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1573724425"></script>
-    <script src="/js/jquery.sticky.js?1573724425"></script>
-    <script src="/js/featherlight.min.js?1573724425"></script>
-    <script src="/js/highlight.pack.js?1573724425"></script>
+    <script src="/js/clipboard.min.js?1591885683"></script>
+    <script src="/js/perfect-scrollbar.min.js?1591885683"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1591885683"></script>
+    <script src="/js/jquery.sticky.js?1591885683"></script>
+    <script src="/js/featherlight.min.js?1591885683"></script>
+    <script src="/js/highlight.pack.js?1591885683"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1573724425"></script>
-    <script src="/js/learn.js?1573724425"></script>
-    <script src="/js/hugo-learn.js?1573724425"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1591885683"></script>
+    <script src="/js/learn.js?1591885683"></script>
+    <script src="/js/hugo-learn.js?1591885683"></script>
 
-    <link href="/mermaid/mermaid.css?1573724425" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1573724425"></script>
+    <link href="/mermaid/mermaid.css?1591885683" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1591885683"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

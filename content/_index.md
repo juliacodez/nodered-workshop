@@ -3,17 +3,26 @@ title: "Node-RED Workshop"
 weight : 1
 ---
 # Node-RED Workshop
-Welcome to the NodeRED Workshop 
+Welcome to the NodeRED Workshop! 
 
 
-## Setting Up
-Claim one of the printed sheets from the tables containing the URL, username and password for a node red instance hosted on our shared server (one per person). When you log in you will be presented with the NodeRED Editor - this is for you to use during this workshop.
+## Getting Started with Node-RED
 
-The first thing you need to do is to setup your Nexmo Credentials, you should have a note of your API Key and Secret to hand or you can find these on the [dashboard](https://dashboard.nexmo.com).
+> Node-RED is a programming tool for wiring together hardware devices, APIs and online services in new and interesting ways.  
+It provides a browser-based editor that makes it easy to wire together flows using the wide range of nodes in the palette that can be deployed to its runtime in a single-click.
 
-Nexmo uses different authentication for our various APIs. For this workshop we will first set up Basic Auth which is used for SMS and Verify, We will get you going with sending your first SMS,
+For this workshop, we'll be using a desktop version of Node-RED called [Workbench](https://github.com/sammachin/workbench/releases).  Download the latest version at [https://github.com/sammachin/workbench/releases](https://github.com/sammachin/workbench/releases) and install it on your machine.
 
-We will then move on to  create a Nexmo Voice application which will provide the auth for the Voice API.
+When you first open up the application, you'll be prompted to log in. Use the default credentials _admin/password_ to do so, then set your own under **Settings**.
+
+![Workbench Login Page](/Workbench_Login.png)
+
+Select _Workbench -> Settings_ from the top menu bar, set your new _Username_ and _Password_, then hit *Save*. You'll be using these credentials going forward.
+
+![Workbench Set Credentials](/Workbench_Set_Credentials.png)
+
+Alternatively, you’ll need to install the Node-RED runtime and editor. This could be done either on your local machine, on a Single Board Computer (eg Raspberry Pi), or a number of cloud-hosted options. If you prefer to go this route, follow the getting started instructions on [nodered.org](https://nodered.org/docs/getting-started/).   
+This is where you'll also find the [documentation](https://nodered.org/docs/), [example flows](https://flows.nodered.org/) and more.
 
 
 

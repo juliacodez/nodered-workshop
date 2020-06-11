@@ -3,6 +3,10 @@
 /* Tags */
 @import "tags.css";
 
+img[alt="Workbench Set Credentials"] {
+    width: 50%;
+}
+
 #top-github-link, #body #breadcrumbs {
     position: relative;
     top: 50%;
@@ -468,11 +472,11 @@ h1 {
     font-weight: 200;
 }
 blockquote {
-    border-left: 10px solid #F0F2F4;
+    border-left: 10px solid #80C7F5;
 }
 blockquote p {
     font-size: 1.1rem;
-    color: #999;
+    color: #252c31;
 }
 blockquote cite {
     display: block;

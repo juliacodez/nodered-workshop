@@ -7,6 +7,10 @@
   </url>
   
   <url>
+    <loc>https://nodered-workshop.nexmodev.com/setting-up/</loc>
+  </url>
+  
+  <url>
     <loc>https://nodered-workshop.nexmodev.com/sending-and-recieving-sms/</loc>
   </url>
   
@@ -19,16 +23,7 @@
   </url>
   
   <url>
-    <loc>https://nodered-workshop.nexmodev.com/badge-hacking/</loc>
-  </url>
-  
-  <url>
     <loc>https://nodered-workshop.nexmodev.com/further-reading/</loc>
-  </url>
-  
-  <url>
-    <loc>https://nodered-workshop.nexmodev.com/setting-up/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
