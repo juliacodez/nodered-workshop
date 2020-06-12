@@ -1,6 +1,6 @@
-baseURL = "https://nodered-workshop.nexmodev.com/"
+baseURL = "https://onehack-nodered.netlify.app/"
 languageCode = "en-us"
-title = "NodeRED at Vonage Campus"
+title = "NodeRED Workshop"
 theme = "learn"
 [params]
  themeVariant = "blue"
