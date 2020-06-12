@@ -472,7 +472,7 @@ h1 {
     font-weight: 200;
 }
 blockquote {
-    border-left: 10px solid #80C7F5;
+    border-left: 10px solid #D6219C;
 }
 blockquote p {
     font-size: 1.1rem;
@@ -634,9 +634,9 @@ code, kbd, pre, samp {
 code {
     border-radius: 2px;
     white-space: nowrap;
-    color: #5e5e5e;
-    background: #FFF7DD;
-    border: 1px solid #fbf0cb;
+    color: #c85e43;
+    background: #f3f3f5;
+    border: 1px solid #f3f3f5;
     padding: 0px 2px;
 }
 code + .copy-to-clipboard {
@@ -1068,17 +1068,17 @@ td {
     display: inline-block;
     vertical-align: middle;
     position: relative;
-    color: #5e5e5e;
-    background-color: #FFF7DD;
+    color: #c85e43;;
+    background-color: #f3f3f5;
     margin-left: -.2rem;
     cursor: pointer;
     border-radius: 0 2px 2px 0;
     margin-bottom: 1px;
 }
-.copy-to-clipboard:hover {
+/* .copy-to-clipboard:hover {
     background-color: #E8E2CD;
-}
-pre .copy-to-clipboard {
+} */
+/* pre .copy-to-clipboard {
     position: absolute;
     right: 4px;
     top: 4px;
@@ -1089,7 +1089,7 @@ pre .copy-to-clipboard {
 pre .copy-to-clipboard:hover {
     background-color: #656c72;
     color: #fff;
-}
+} */
 .parent-element {
     -webkit-transform-style: preserve-3d;
     -moz-transform-style: preserve-3d;

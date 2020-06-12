@@ -1,5 +1,5 @@
 ---
-title: "Setting Up"
+title: "Vonage Credentials"
 weight : 05
 ---
 {{% notice note %}}

@@ -27,35 +27,38 @@ Next we will purchase a number and link that to our new voice application and co
 
 4. Choose a number and click the **Buy** button. After a few seconds you will see a popup confirming the number has been assigned to your account.
 
-5. From the right hand menu select **Your Numbers** You should then see the number you purchased listed. Click on the cog icon under **Manage**
+5. From the right hand menu select **Your Numbers** You should then see the number you purchased listed. Click on the pencil icon under **Manage**
 
     ![Your Numbers](/Your_Numbers.png)
 
 6. Now we will be presented with an interface to configure where  SMSes to this number should be sent.
 
-7. For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter the hostname of your instance followed by */sms*  ** e.g. https://monkey.workbench.red/sms**
+7. For SMS we configure the Webhook URL directly, the Nexmo platform will make an HTTP request to this address for each SMS, enter your ngrok URL followed by `/sms`.  e.g. `https://cfbc264bb29b.ngrok.io/sms`
 
-	![Configure Number for SMS](/config_number_sms.png)
+	![Configure Number for SMS in Dashboard](/SMS_Dashboard_Config.png)
 
 ## Send an SMS
 
-Back in our SMS Node we can now setup some parameters for the outgoing SMS, there are 3 things to set, the Destination, the Sender and the content of the message.
+Back in our SMS Node, we can now set some parameters for the outgoing SMS.  
+There are 3 values to set:
+
+| KEY           | DESCRIPTION 
+| --------------- | --- |
+| `TO`     | The number you are sending the SMS to, in e.164 format.|
+| `FROM`     | The number or text shown on a handset when it displays your message. You can also set a custom alphanumeric `FROM` value if this feature is [supported in your country](https://help.nexmo.com/hc/en-us/articles/115011781468).| 
+| `TEXT`     | The content of your message, maybe `Hello World`.|
 
 {{% notice info %}}
-Where ever a phone number is used with Nexmo it should be in e.164 format, that is with the country code but without any other characters or spaces, for example the us number `(212) 555-1212` should become `12125551212` or the UK number 07000 900 123 would become `447000900123`
+In Vonage context, every phone number should be used in e.164 format: with the country code, but without any other characters or spaces.  
+For example, the US number `(212) 555-1212` should become `12125551212`, and the UK number `07000 900 123` would become `447000900123`
 {{% /notice  %}}
-
-1. In the **To** Field enter your mobile number in e.164 format.
-
-2. In the **From** Field enter the nexmo number you just purchased
-
-3. In the **Text** Fileld enter some text like `Hello World`
  
  ![Configure SMS](/configure_sms.png)
 
-Now we need something to trigger our Send SMS node and start the flow, the simplest way to do this in NodeRED is to use an **Inject** node, this will send whatever payload you configure whenever you click the grey button on the left of the node, For our Send SMS node we don't really mind what the payload is so just leave that as the default (timestamp)
+Now we need something to trigger our Send SMS node and start the flow. The simplest way to do this in NodeRED is to use an **Inject** node, this will send whatever payload you configure whenever you click the grey button on the left of the node.  
+For the Send SMS node we don't really mind what the payload is so just leave that as the default (timestamp).
 
-We also want to log the response from the Nexmo API to our SendSMS request, for this we will use the **Debug** node which will log the msg.payload to the debug panel on the right of the editor.
+We also want to log the response from the SMS API to our SendSMS request, for this we will use the **Debug** node which will log the msg.payload to the debug panel on the right of the editor.
 
 You flow should now look like this, remember to click **Deploy** to save your flow.
 
@@ -65,7 +68,7 @@ You can now click the grey button on the inject node to send yourself an SMS ðŸ™
 
 ## Handling an Incoming SMS
 
-SMS messages sent to your Nexmo number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.
+SMS messages sent to your virtual number are delivered to your webhook as a HTTP GET requests (you can change to POST in the dashboard), To handle this we are going to create a simple NodeRED Flow.
 
 1. From the **network** section of the palette drag an **http in** node onto your canvas. Double click to open the properties, then make sure that the Method is set to **GET**.
 
@@ -81,7 +84,7 @@ HTTP Input nodes need a coresponding output node, otherwise the HTTP request won
 
 5. Click the red **Deploy** button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you'll need to do this often as you work through these flows.
 
-6. Now send an SMS to your Nexmo number from your phone, in a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.
+6. Now send an SMS to your virtual number from your phone. In a few seconds you should see the details of the message in the debug window on the right. You may need to click the Bug icon to display this.
 
 ## Sending an SMS in Response
 {{% notice note %}}
@@ -92,12 +95,12 @@ SMS doesn't really have the concept of replies, however we can send a new SMS in
 
 2. Open the properties for the Send SMS node, select your API key as the **Nexmo Credentials**.
 {{% notice tip %}}
- You will notice that next to the *To*, *From* and *Text* fields there are **{}** symbols, this is to indicate that these fields support templating. You can either enter static vaules in these fields or use dynamic vaules from previous messages or other parts of your NodeRED flow.
+ You will notice that next to the *To*, *From* and *Text* fields there are **{}** symbols, this is to indicate that these fields support templating. You can either enter static values in these fields or use dynamic values from previous messages or other parts of your NodeRED flow.
 {{% /notice  %}}
 
 4. In the previous section you viewed the details of the incoming SMS in your debug window, this contained the **msg.payload** object with its own properties. We will use these to setup our response message:
     - **msisdn** was the number that sent the message to your application
-    - **to** is your Nexmo number
+    - **to** is your virtual number
     - **text**contains the contents of the message.
 
 5. In the **To** field for Send SMS enter ``{{msg.payload.msisdn}}`` so that we use the sender of the original message as our recipient in the response.
@@ -110,7 +113,7 @@ SMS doesn't really have the concept of replies, however we can send a new SMS in
 
 8. Click the **Done** button Then click **Deploy**.
 
-9. If you now send another message to your Nexmo number you should get back a message in response.
+9. If you now send another message to your Vonage number you should get back a message in response.
 
-**That`s the basics of SMS messaging with Nexmo and NodeRED**
+**That`s the basics of SMS messaging with Vonage and NodeRED**
 
