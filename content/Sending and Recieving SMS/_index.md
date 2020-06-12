@@ -19,7 +19,7 @@ Next we will purchase a number and link that to our new voice application and co
 
 1. First, log in to your Nexmo account at https://dashboard.nexmo.com
 
-2. From the right hand menu select **Numbers** then **Buy Numbers**
+2. From the right-hand menu select **Numbers** then **Buy Numbers**
 
 3. In the Dropdown lists select your country, Then under Features select **SMS & Voice**  and Type **Mobile**, Then click **Search**
 
@@ -27,7 +27,7 @@ Next we will purchase a number and link that to our new voice application and co
 
 4. Choose a number and click the **Buy** button. After a few seconds you will see a popup confirming the number has been assigned to your account.
 
-5. From the right hand menu select **Your Numbers** You should then see the number you purchased listed. Click on the pencil icon under **Manage**
+5. From the right-hand menu select **Your Numbers** You should then see the number you purchased listed. Click on the pencil icon under **Manage**
 
     ![Your Numbers](/Your_Numbers.png)
 
@@ -76,10 +76,10 @@ SMS messages sent to your virtual number are delivered to your webhook as a HTTP
 
 3. Connect an **http response** node from the network section of the palette to your original **http in** input node.
 {{% notice info %}}
-HTTP Input nodes need a coresponding output node, otherwise the HTTP request won't receive a response. For SMS Webhooks Nexmo doesn't particuarly care about the content of the response so long as it returns a success code.
+HTTP Input nodes need a corresponding output node, otherwise the HTTP request won't receive a response. For SMS Webhooks Nexmo doesn't particularly care about the content of the response so long as it returns a success code.
 {{% /notice  %}}
 
-4. Add a **debug** node from the **common** section and connect it to the **http in.**. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
+4. Add a **debug** node from the **common** section and connect it to the **http in**. This enables us to inspect the contents of the webhook, such as the SMS message and the sender details. Your flow should look like this:
     ![Inbound SMS](/SMS_Webhook.png)
 
 5. Click the red **Deploy** button in the top left to make this flow live. The deploy button makes your canvas changes take effect so you'll need to do this often as you work through these flows.
@@ -101,7 +101,7 @@ SMS doesn't really have the concept of replies, however we can send a new SMS in
 4. In the previous section you viewed the details of the incoming SMS in your debug window, this contained the **msg.payload** object with its own properties. We will use these to setup our response message:
     - **msisdn** was the number that sent the message to your application
     - **to** is your virtual number
-    - **text**contains the contents of the message.
+    - **text** contains the contents of the message.
 
 5. In the **To** field for Send SMS enter ``{{msg.payload.msisdn}}`` so that we use the sender of the original message as our recipient in the response.
 
@@ -109,11 +109,11 @@ SMS doesn't really have the concept of replies, however we can send a new SMS in
 
 7. In **Text** enter `You said {{msg.payload.text}}`. You will see here that we are using a combination of our own static text and the contents of the original message for our response, this is the concept of templating.
 
-    ![Response SMS](/Response_SMS.png)
-
-8. Click the **Done** button Then click **Deploy**.
+8. Click the **Done** button, then **Deploy**.
 
 9. If you now send another message to your Vonage number you should get back a message in response.
+
+![Response SMS](/Response_SMS.png)
 
 **That`s the basics of SMS messaging with Vonage and NodeRED**
 

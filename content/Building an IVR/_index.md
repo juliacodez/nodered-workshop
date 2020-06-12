@@ -20,7 +20,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 3. Your Flow should look like this:
 
-    ![IVR Inital Call Handler](/IVR_1.png)
+    ![IVR Iniital Call Handler](/IVR_1.png)
 
 4. Next we need to configure the nodes we added, starting with the **talk** node.
 
@@ -32,7 +32,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 5. Next we configure the **input** node, Once the user has entered the required number of digits those will be sent as a new webhook, so we need to configure where that webhook should be sent.
 
-6. In the URL field, enter the full address of your NodeRED instance followed by `/input1` (e.g. **https://monkey.workbench.red/input1**).  We use **/input1** because if we were to later create a second level to our IVR we would need to send that input to a different address, e.g. **/input2**.
+6. In the URL field, enter the full address of your NodeRED instance followed by `/input1` (e.g. **https://cfbc264bb29b.ngrok.io/input1**).  We use **/input1** because if we were to later create a second level to our IVR we would need to send that input to a different address, e.g. **/input2**.
 
 7. Set the method to GET. We can leave *Submit on Hash* unchecked; this option causes the input to be sent when the user presses the # key e.g. for collecting something like an account number.
 
