@@ -32,7 +32,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 5. Next we configure the **input** node, Once the user has entered the required number of digits those will be sent as a new webhook, so we need to configure where that webhook should be sent.
 
-6. In the URL field, enter the full address of your NodeRED instance followed by `/input1` (e.g. **https://cfbc264bb29b.ngrok.io/input1**).  We use **/input1** because if we were to later create a second level to our IVR we would need to send that input to a different address, e.g. **/input2**.
+6. In the URL field, enter the full address of your NodeRED instance followed by `/input1` (e.g. `https://cfbc264bb29b.ngrok.io/input1`).  We use `/input1` because if we were to later create a second level to our IVR we would need to send that input to a different address, e.g. `/input2`.
 
 7. Set the method to GET. We can leave *Submit on Hash* unchecked; this option causes the input to be sent when the user presses the # key e.g. for collecting something like an account number.
 
@@ -42,7 +42,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 ## Handling the Input
 
-1. Set up another **voice webhook** to handle the user input arriving from Nexmo. It should be configured to listen for a **GET** on `/input1` which corresponds to our setting in the *input* node above.
+1. Set up another **voice webhook** to handle the user input arriving from Vonage. It should be configured to listen for a **GET** on `/input1` which corresponds to our setting in the *input* node above.
 
 2. The first thing we will do with this flow is to check what number the caller pressed and then branch our flow accordingly. We can do this using one of NodeRED's built in nodes, the **switch** node. You'll find **switch** in the "function" section of the palette.
 
@@ -50,7 +50,7 @@ An IVR can have multiple levels to it, where selection of one option presents th
 
 4. We then need to set up routes for each option
 
-    - on the first option, use the dropdown to choose "is empty" so we can handle the case where we don't get any user input. In this scenario Nexmo will send the webhook with the *timedout* param set to true and `msg.call.dtmf` will be an empty string.
+    - on the first option, use the dropdown to choose "is empty" so we can handle the case where we don't get any user input. In this scenario Vonage will send the webhook with the *timedout* param set to true and `msg.call.dtmf` will be an empty string.
     - click the + add button at the bottom to add two additional options
     - we will set up handlers for `== 1` and `== 2` so that we can detect what number the user pressed. These become the second and third output points on the switch node.
  
@@ -62,10 +62,10 @@ You will notice that your **switch** node now has three output links, each one o
 
 1. Firstly we will deal with the *is empty* path, the simplest thing to do here is to re-present the user with the menu options, so we can simply connect this back to our initial talk node to read the options and then collect input. 
 
-2. Next we need to do something if the caller presses 1. For this we will connect the caller to another numbe using a "connect" node from the palette. To configure this node to connect the call to another phone number:
+2. Next we need to do something if the caller presses 1. For this we will connect the caller to another number using a "connect" node from the palette. To configure this node to connect the call to another phone number:
     - The **Endpoint** should be **Phone**. 
     - The **Number** should be another phone number you might have (ask the person next to you if you can use their cellphone number)
-    - The **From** should be your Nexmo number.
+    - The **From** should be your Vonage number.
 
     ![Connect Node Config](/Connect_Node_Config.png)
 
@@ -77,17 +77,17 @@ You will notice that your **switch** node now has three output links, each one o
 
     In the input node edit the URL from `/input1` to be `/input1?from={{msg.call.from}}` this will then send the value of "from" as a new value also called "from" to our `/input1` handler.
 
-5. Now we can add our **Send SMS** node, select your Nexmo credentials, set the **To** as `{{msg.call.from}}` and the **From** as your Nexmo number. In the text field you can enter a URL of your choice e.g. https://vonage.com/campus, this will be the link we send to the user.
+5. Now we can add our **Send SMS** node, select your Vonage credentials, set the **To** as `{{msg.call.from}}` and the **From** as your Vonage number. In the text field you can enter a URL of your choice e.g. https://onehack-nodered.netlify.app/building-an-ivr, this will be the link we send to the user.
 
 6. We need to make sure that the last two paths from the Switch Node are both closed off with a "Return NCCO" node, you can use separate ones or they can both share the same node.
 
-7. Finally we will add a debug node to the end of the Send SMS to log the response from Nexmo.
+7. Finally we will add a debug node to the end of the Send SMS to log the response from Vonage.
 
     Your Flow should look like this:
 
     ![IVR Complete](/IVR_Complete.png)
 
-8. Click **Deploy** and then go ahead and call your Nexmo number a few times to try all the different options.
+8. Click **Deploy** and then go ahead and call your virtual number a few times to try all the different options.
 
 
 ## Expanding your IVR
@@ -98,8 +98,6 @@ Here are some suggestions for additional things to add to your IVR:
 * Add an option to connect the caller into a conversation node, this will give you a conference call. Test by having someone else call the same number
 * Try recording a message from the caller
 * If you are feeling very adventurous, set up the Email node to email you when someone chooses a particular option
-
-There will be people around to help you with these.
 
 
 
