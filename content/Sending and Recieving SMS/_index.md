@@ -15,7 +15,7 @@ weight : 15
 
 ## Phone Number Setup
 
-Next we will purchase a number and link that to our new voice application and configure a webhook for SMS.
+Next we will purchase a numbe and configure a webhook for SMS.
 
 1. First, log in to your Nexmo account at https://dashboard.nexmo.com
 
